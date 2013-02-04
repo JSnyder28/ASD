@@ -1,0 +1,70 @@
+/*
+Joshua Snyder
+MIU 1212
+Project 4
+Gold app
+*/
+
+#clearAll {
+	
+}
+
+#customHeaderDiv {
+	margin-bottom: -7px;
+}
+
+#customHeaderDiv > ul {
+	margin-bottom: 5px;
+	list-style-type: none;
+}
+
+#customHeaderDiv > ul > li {
+	display: inline;
+}
+
+#logoImg {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+}
+
+#customHeaderDiv > ul > li > h1 {
+	padding-left: 60px;
+	margin-top: -9px;
+	text-align: center;
+	vertical-align: text-top;
+}
+
+#customHeaderDiv > a {
+	margin-right: 300px;
+}
+
+#date-added {
+	background-color: white;
+	color: black;
+}
+
+#rcpName {
+	background-color: white;
+	color: black;
+}
+
+#txtArea-a {
+	background-color: white;
+	color: black;
+}
+
+#txtArea-b {
+	background-color: white;
+	color: black;
+}
+
+label.error {
+    display: block;
+    margin: 10px 0;
+    color: red;
+}
+
+#errorsLink {
+    display: none;
+}

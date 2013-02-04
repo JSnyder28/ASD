@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<!-- Joshua Snyder -->
+<!-- MIU 1212 -->
+<!-- Project 4 -->
+<!-- Gold app -->
+
+<html>
+	<head> 
+		<title>Recipes!</title> 
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+		<!-- Stylesheets -->
+		<link rel="stylesheet" href="css/themes/purple.min.css">
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile.structure-1.2.0.min.css" />
+		<link rel="stylesheet" href="css/style.css" />
+
+		<!-- Modernizr script -->
+		<!-- <script src="js/libs/modernizr.custom.min.js"></script> -->
+
+	</head> 
+	<body> 
+
+		<div data-role="page" data-theme="a" id="home"><!-- page -->
+			<div data-role="header" data-position="fixed"><!-- header -->
+				<div class="ui-bar" id="customHeaderDiv"><!-- custom div -->
+					<ul>
+						<li><a href="#home"><img src="img/RecipesLogo.png" id="logoImg"></a></li>
+						<li><h1>Where You Live</h1></li>
+					</ul>
+				</div><!-- /custom div -->
+			</div><!-- /header -->
+			
+			<div data-role="content">			
+				<div data-role="fieldcontain">
+					<label for="img-CTA"><h3>Need a Recipe Idea?</h3></label>
+					<img src="img/clam_chowder_soup.jpg" id="img-CTA">
+				</div><!-- /CTA Image -->
+
+					<h3>Browse a Category:</h3>
+					<ul data-role="listview" data-inset="true" data-filter="true">
+						<li><a href="#american">American</a></li>
+						<li><a href="#error404">Chinese</a></li>
+						<li><a href="#error404">Italian</a></li>
+						<li><a href="#error404">Japanese</a></li>
+						<li><a href="#error404">Mexican</a></li>
+						<li><a href="#error404">Seasonal</a></li>
+					</ul><!-- Category Links -->
+			</div><!-- /content -->
+
+			<div data-role="footer" data-position="fixed" data-id="home">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#home" data-icon="home" class="ui-btn-active">Home</a></li>
+						<li><a href="#addItem" data-icon="plus">Recipe</a></li>
+						<li><a href="#rcpDispPage" data-icon="grid" id="viewRcps">My Recipes</a></li>
+						<li><a href="#info" data-icon="info">Info</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div><!-- /footer -->
+
+		</div><!-- /page -->
+
+		<!-- Page -->
+		<div data-role="page" id="addItem" data-theme="a">
+			<div data-role="header" data-position="fixed">
+				<div class="ui-bar" id="customHeaderDiv"><!-- custom div -->
+					<ul>
+						<li><a href="#home"><img src="img/RecipesLogo.png" id="logoImg"></a></li>
+						<li><h1>New Recipe!</h1></li>
+					</ul>
+				</div><!-- /custom div -->
+			</div><!-- /header -->
+
+			<div data-role="content">
+				<!-- Form -->
+				<form action="#" method="" id="newRcpForm">	
+					<fieldset>
+						<legend>*Required</legend>			
+						<div id="select">
+							<label for="select-choice-1" class="select">Categories:</label>
+							<select name="select-choice-1" id="select-choice-1">
+								<option value="" data-placeholder="true">-- Choose A Category --</option>
+								<option value="american">American</option>
+								<option value="chinese">Chinese</option>
+								<option value="italian">Italian</option>
+								<option value="japanese">Japanese</option>
+								<option value="mexican">Mexican</option>
+								<option value="seasonal">Seasonal</option>
+							</select>
+						</div><!-- /select -->
+						<div id="input-date">
+							<label for="date-added">Date Added:</label>
+							<input type="date" name="date" id="date-added" value=""/>
+						</div><!-- /date -->
+						<div id="input-basic-txt">
+							<label for="basicTxt">*Recipe Name:</label>
+							<input type="text" name="name" id="rcpName" value="" class="required"/>
+						</div><!-- /basic text input -->
+						<div id="txt-area-a">
+							<label for="txtArea-a">*Ingredients:</label>
+							<textarea name="textarea-ingredients" id="txtArea-a" value="" class="required"></textarea>
+						</div><!-- /text area-a input -->
+						<div id="txt-area-b">
+							<label for="txtArea-b">*Directions:</label>
+							<textarea name="textarea-directions" id="txtArea-b" class="required"></textarea>
+						</div><!-- /text area-b input -->
+						<div id="input-slider">
+							<label for="slider">Rate it:</label>
+							<input type="range" name="slider" id="slider" value="3" min="0" max="5" />
+						</div><!-- /slider -->
+						<div data-role="fieldcontain" id="checkbox">
+							<fieldset data-role="controlgroup">
+								<legend>Go-To Meal?</legend>
+								<input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
+								<label for="checkbox-1">Yes</label>
+							</fieldset>
+						</div><!-- /checkbox -->
+						<div id="button-submit">
+							<input type="submit" value="Add It!" id="addIt" />
+							<input type="reset" value="Reset It!" id="resetIt" data-theme="b" />
+						</div><!-- / buttons -->
+						<!-- <a href="#errors" id="errorsLink" data-rel="dialog" data-transition="pop">open errors</a> -->
+					</fieldset>
+				</form>
+				<!-- /form -->
+			</div><!-- /content -->
+
+			<div data-role="footer" data-position="fixed" data-id="home">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="#addItem" data-icon="plus" class="ui-btn-active">Recipe</a></li>
+						<li><a href="#rcpDispPage" data-icon="grid" id="viewRcps">My Recipes</a></li>
+						<li><a href="#info" data-icon="info">Info</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div><!-- /footer -->
+		</div><!-- /Add recipe page -->
+
+		<div data-role="page" id="american" data-theme="a">
+			<div data-role="header" data-position="fixed">
+				<div class="ui-bar" id="customHeaderDiv"><!-- custom div -->
+					<ul>
+						<li><a href="#home"><img src="img/RecipesLogo.png" id="logoImg"></a></li>
+						<li><h1>American</h1></li>
+					</ul>
+				</div><!-- /custom div -->
+			</div><!-- /header -->
+			<div data-role="content">
+				<div data-role="fieldcontain">
+					<a href="#"><img src="img/chicken_strips.jpg">Chicken Strip with Garden Salad</a>
+				</div>
+				<div data-role="fieldcontain">
+					<a href="#"><img src="img/steak.jpg">Grilled Porterhouse Steak with Paprika-Parmesan Butter</a>
+				</div>
+				<div data-role="fieldcontain">
+					<a href="#"><img src="img/chili_dog.jpg">Jalapeno Chili Dog</a>
+				</div>
+				<div data-role="fieldcontain">
+					<a href="#"><img src="img/pot_roast.jpg">Pot Roast with Vegtables</a>
+				</div>
+				<div data-role="fieldcontain">
+					<a href="#"><img src="img/chicken_fried.jpg">Texas on a Half shell Chicken Fired Steak</a>
+				</div>
+			</div><!-- /content -->
+			<div data-role="footer" data-position="fixed" data-id="home">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="#addItem" data-icon="plus">Recipe</a></li>
+						<li><a href="#error404" data-icon="grid" id="viewRcps">My Recipes</a></li>
+						<li><a href="#info" data-icon="info">Info</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div><!-- /footer -->
+
+		</div><!-- /American category page -->
+
+		<div data-role="page" id="chinese" data-theme="a">
+			<div data-role="header" data-position="fixed">
+				<div class="ui-bar" id="customHeaderDiv"><!-- custom div -->
+					<ul>
+						<li><a href="#home"><img src="img/RecipesLogo.png" id="logoImg"></a></li>
+						<li><h1>Chinese</h1></li>
+					</ul>
+				</div><!-- /custom div -->
+			</div><!-- /header -->
+			<div data-role="content">
+				<img src="img/Chinese.png">
+			</div><!-- /content -->
+			<div data-role="footer" data-position="fixed" data-id="home">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="#addItem" data-icon="plus">Recipe</a></li>
+						<li><a href="#error404" data-icon="grid" id="viewRcps">My Recipes</a></li>
+						<li><a href="#info" data-icon="info">Info</a></li>
+				</div><!-- /navbar -->
+			</div><!-- /footer -->
+
+		</div><!-- /Chinese category page -->
+
+		<div data-role="page" id="italian" data-theme="a">
+			<div data-role="header" data-position="fixed">
+				<div class="ui-bar" id="customHeaderDiv"><!-- custom div -->
+					<ul>
+						<li><a href="#home"><img src="img/RecipesLogo.png" id="logoImg"></a></li>
+						<li><h1>Italian</h1></li>
+					</ul>
+				</div><!-- /custom div -->
+			</div><!-- /header -->
+			<div data-role="content">
+				<img src="img/Italian.png">
+			</div><!-- /content -->
+			<div data-role="footer" data-position="fixed" data-id="home">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="#addItem" data-icon="plus">Recipe</a></li>
+						<li><a href="#error404" data-icon="grid" id="viewRcps">My Recipes</a></li>
+						<li><a href="#info" data-icon="info">Info</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div><!-- /footer -->
+
+		</div><!-- /Italian category page -->
+
+		<div data-role="page" id="japanese" data-theme="a">
+			<div data-role="header" data-position="fixed">
+				<div class="ui-bar" id="customHeaderDiv"><!-- custom div -->
+					<ul>
+						<li><a href="#home"><img src="img/RecipesLogo.png" id="logoImg"></a></li>
+						<li><h1>Japanese</h1></li>
+					</ul>
+				</div><!-- /custom div -->
+			</div><!-- /header -->
+			<div data-role="content">
+				<img src="img/Japanese.png">
+			</div><!-- /content -->
+			<div data-role="footer" data-position="fixed" data-id="home">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="#addItem" data-icon="plus">Recipe</a></li>
+						<li><a href="#error404" data-icon="grid" id="viewRcps">My Recipes</a></li>
+						<li><a href="#info" data-icon="info">Info</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div><!-- /footer -->
+
+		</div><!-- /Japanese category page -->
+
+		<div data-role="page" id="mexican" data-theme="a">
+			<div data-role="header" data-position="fixed">
+				<div class="ui-bar" id="customHeaderDiv"><!-- custom div -->
+					<ul>
+						<li><a href="#home"><img src="img/RecipesLogo.png" id="logoImg"></a></li>
+						<li><h1>Mexican</h1></li>
+					</ul>
+				</div><!-- /custom div -->
+			</div><!-- /header -->
+			<div data-role="content">
+				<img src="img/Mexican.png">
+			</div><!-- /content -->
+			<div data-role="footer" data-position="fixed" data-id="home">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="#addItem" data-icon="plus">Recipe</a></li>
+						<li><a href="#error404" data-icon="grid" id="viewRcps">My Recipes</a></li>
+						<li><a href="#info" data-icon="info">Info</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div><!-- /footer -->
+
+		</div><!-- /Mexican category page -->
+
+		<div data-role="page" id="seasonal" data-theme="a">
+			<div data-role="header" data-position="fixed">
+				<div class="ui-bar" id="customHeaderDiv"><!-- custom div -->
+					<ul>
+						<li><a href="#home"><img src="img/RecipesLogo.png" id="logoImg"></a></li>
+						<li><h1>Seasonal</h1></li>
+					</ul>
+				</div><!-- /custom div -->
+			</div><!-- /header -->
+			<div data-role="content">
+				<img src="img/Seasonal.png">
+			</div><!-- /content -->
+			<div data-role="footer" data-position="fixed" data-id="home">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="#addItem" data-icon="plus">Recipe</a></li>
+						<li><a href="#error404" data-icon="grid" id="viewRcps">My Recipes</a></li>
+						<li><a href="#info" data-icon="info">Info</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div><!-- /footer -->
+
+		</div><!-- /Seasonal category page -->
+
+		<div data-role="page" id="info" data-theme="a">		
+			<div data-role="header" data-position="fixed">
+				<div class="ui-bar" id="customHeaderDiv"><!-- custom div -->
+					<ul>
+						<li><a href="#home"><img src="img/RecipesLogo.png" id="logoImg"></a></li>
+						<li><h1>Info</h1></li>
+					</ul>
+				</div><!-- /custom div -->
+			</div><!-- /header -->
+			<div data-role="content">
+				<ul id="reqLinks">
+					<li><a href="https://github.com/JSnyder28/MIU.git">GitHub</a></li>
+					<li><a href="http://jsnyder28.github.com/MIU/Projects/snyder_joshua_project4/Bronze/index.html">Bronze App</a></li>
+				</ul>
+			</div><!-- /content -->
+			<div data-role="footer" data-position="fixed" data-id="home">
+				<div data-role="navbar">
+					<ul>					
+						<li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="#addItem" data-icon="plus">Recipe</a></li>
+						<li><a href="#error404" data-icon="grid" id="viewRcps">My Recipes</a></li>
+						<li><a href="#info" data-icon="info" class="ui-btn-active">Info</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div><!-- /footer -->
+
+		</div><!-- /Info page -->
+
+		<div data-role="page" id="rcpDispPage" data-theme="a"><!-- display recipes page -->
+			<div data-role="header" data-position="fixed"><!-- header -->
+				<div class="ui-bar" id="customHeaderDiv">
+					<ul>
+						<li><a href="#home"><img src="img/RecipesLogo.png" id="logoImg"></a></li>
+						<li><h1>My Recipes!</h1></li>
+					</ul>
+				</div>
+			</div><!-- /header -->
+			<div data-role="content"><!-- content -->
+
+				<div data-role="fieldcontain">
+					<a href="#rcpDisPage" data-role="button" data-mini="true" id="clearAll">Clear Recipes</a>
+				</div>
+
+			</div><!-- /content -->
+			<div data-role="footer" data-position="fixed" data-id="home"><!-- footer -->
+				<div data-role="navbar"><!-- navbar -->
+					<ul>
+						<li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="#addItem" data-icon="plus">Recipe</a></li>
+						<li><a href="#rcpDispPage" data-icon="grid" id="viewRcps">My Recipes</a></li>
+						<li><a href="#info" data-icon="info">Info</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div><!-- /footer -->
+		</div><!-- /display recipes page -->
+
+		<div data-role="page" id="error404" data-theme="a"><!-- error 404 Page -->
+			<div data-role="header" data-position="fixed"><!-- header -->
+				<div class="ui-bar" id="customHeaderDiv"><!-- custom div -->
+					<ul>
+						<li><a href="#home"><img src="img/RecipesLogo.png" id="logoImg"></a></li>
+						<li><h1>Oops!</h1></li>
+					</ul>
+				</div><!-- /custom div -->
+			</div><!-- /header -->
+			<div data-role="content"><!-- content -->
+				<h1>404</h1>
+				<p>Sorry for the onconvenience. Our writers are experiencing some writers cramp.</p>
+				<p>Recipes will be added as soon as possible!</p>
+			</div><!-- /content -->
+			<div data-role="footer" data-position="fixed" data-id="home"><!-- footer -->
+				<div data-role="navbar"><!-- navbar -->
+					<ul>
+						<li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="#addItem" data-icon="plus">Recipe</a></li>
+						<li><a href="#error404" data-icon="grid" id="viewRcps">My Recipes</a></li>
+						<li><a href="#info" data-icon="info" class="ui-btn-active">Info</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div><!-- /footer -->
+		</div><!-- /error404 page -->
+
+		<!-- <div data-role="dialog" id="errors">
+			<div data-role="header" data-position="fixed">
+				<h1>Missing Fields</h1>
+			</div><!-- /header --
+			
+			<div data-role="content">
+				<ul>
+					<li>Test</li>
+				</ul>
+			</div>
+		</div><!-- /errors page -->
+
+		<!-- Javascript -->
+		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+		<script type="text/javascript" src="js/libs/jquery.validate.min.js"></script>
+		<script type="text/javascript" src="js/json.js"></script>
+		<script type="text/javascript" src="js/sample-Main.js"></script>
+	</body>
+</html>
