@@ -1,6 +1,9 @@
 /*
 Joshua Snyder
-ASD 1302
+ASD 1303
 Project Week 1
 */
 
+#home > section > ul {
+	list-style-type: none;
+}
