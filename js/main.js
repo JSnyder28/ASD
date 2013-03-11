@@ -4,7 +4,7 @@
 
 
 $("#newRcpForm").on("pageinit", function() {
-	//When form page loads, validate function runs.
+	//When form page loads, validate function is active.
 	
 });
 
