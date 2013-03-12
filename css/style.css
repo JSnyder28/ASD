@@ -4,6 +4,6 @@ ASD 1303
 Project Week 1
 */
 
-#home > section > ul {
+#home > div > ul {
 	list-style-type: none;
 }
