@@ -31,12 +31,15 @@ $('#view').on('pageinit', function() {
     $('#view').on('click', function() {
 
     	$.each(localStorage, function(key, value) {
+    		console.log(key);
+    		console.log(value);
     		var value = localStorage.getItem(key);
     		var obj = JSON.parse(value);
     		$('<ul>').appendTo('#view > section');
     		console.log(value);
+    		console.log(obj);
+    		console.log(obj[0].name);
     		console.log(obj[0].value);
-    		console.log(obj[1].value);
     		$.each(obj, function(index, value) {
     			$('<li>').appendTo('#view > section > ul')
     			.append(value.name + ": " + value.value)
@@ -44,6 +47,7 @@ $('#view').on('pageinit', function() {
     			console.log(obj);
     			console.log(index);
     			console.log(value);
+    			console.log(value.name);
     			console.log(value.value);
     			//$.each(value, function(index, value) {
     			//	console.log(index);
