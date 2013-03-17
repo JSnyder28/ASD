@@ -84,10 +84,15 @@ $('#view').on('pageinit', function() {
         $('<div>').attr('id', 'items')
                   .appendTo('#view > section')
                  ;
+        var recipes = $('<ul>');
+        $(recipes).appendTo('#items');
         console.log(localStorage);
         console.log(localStorage.name);
         $.each(localStorage, function(key, value) {
-            $('<ul>Recipe</ul>').appendTo('#items');
+            var Li = $('<li>Recipe</li>');
+            $(Li).appendTo(recipes);
+            var subList = $('<ul>');
+            $(subList).appendTo(Li);
             console.log(localStorage.length);
             console.log(key);
             console.log(value);
@@ -97,15 +102,17 @@ $('#view').on('pageinit', function() {
             console.log(value);
             var obj = JSON.parse(value);
             console.log(obj);
-            $(obj).each(function(index, Element) {
-                $('<li>' + index + " " + this.name + ": " + this.value + '</li>')
-                     .appendTo('#items > ul')
-                    ;
+            $(obj).each(function(index, value) {
+                var subLi = ('<li>' + value.name + ": " + value.value + '</li>');
+                    text = (value.name + ": " + value.value);
+                $(subLi).appendTo(subList);
+                console.log(text);
                 console.log(Element);
                 console.log(index);
                 console.log(this);
-                console.log(this.name);
-                console.log(this.value);
+                console.log(value.name);
+                console.log(value.value);
+
             });
 /*            console.log(value);
             console.log(obj);
