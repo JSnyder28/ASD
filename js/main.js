@@ -19,6 +19,7 @@ $('#add').on('pageinit', function() {
         //console.log(id);
         localStorage.setItem(id, JSON.stringify(data));
         //console.log(data);
+        console.log(localStorage.setItem(id, JSON.stringify(data)));
 
         event.preventDefault();    
     });
@@ -81,25 +82,56 @@ $('#view').on('pageinit', function() {
         });*/
 
         $('<div>').attr('id', 'items')
-                .append('<ul>')
-                .appendTo('#view > section')
-            ;
-
+                  .appendTo('#view > section')
+                 ;
+        console.log(localStorage);
+        console.log(localStorage.name);
         $.each(localStorage, function(key, value) {
+            $('<ul>Recipe</ul>').appendTo('#items');
+            console.log(localStorage.length);
+            console.log(key);
             console.log(value);
-            ;
-            console.log(localStorage.getItem(key));
-            $.each(JSON.parse(value), function(key, value) {
-                $('<li>').css('list-style-type', 'none')
-                    .append(value.name + ": " + value.value)
-                    .appendTo('#items > ul');
-                ;
-                console.log(key);
-                console.log(value.name + ": " + value.value);
+            console.log(this);
+            console.log(value.name);
+            console.log(value.value);
+            console.log(value);
+            var obj = JSON.parse(value);
+            console.log(obj);
+            $(obj).each(function(index, Element) {
+                $('<li>' + index + " " + this.name + ": " + this.value + '</li>')
+                     .appendTo('#items > ul')
+                    ;
+                console.log(Element);
+                console.log(index);
+                console.log(this);
+                console.log(this.name);
+                console.log(this.value);
             });
-            
+/*            console.log(value);
+            console.log(obj);
+            console.log(obj[0].name);
+            console.log(obj[0].value);
+//            console.log(text);
+            $('<ul>').appendTo('#items')
+//                     .append('<li>')
+                    ;
+//            $('<li>').appendTo('#items > ul')
+//                     .append('<ul>')
+//                    ;
+//            $('<li>').appendTo('#items > ul > li > ul');
+//            console.log(this);
+            $.each(obj, function(i, val) {
+                $('<li>').append(val.name + ": " + val.value)
+                        .appendTo('#items > ul')
+                        ;
+                console.log(i);
+                console.log(val);
+    //                console.log(val.name);
+//                console.log(val.value);
+                console.log(this.name + ": " + this.value);
+                console.log(this);
+            });                                             */
         });
-
 
     });
 
