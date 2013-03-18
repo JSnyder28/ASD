@@ -29,57 +29,7 @@ $('#add').on('pageinit', function() {
 
 $('#view').on('pageinit', function() {
     
-    $('#view').on('click', function() {
-
-        /*$('<div>').attr('id', 'items')
-                .appendTo('#view > section')
-        ;
-        $(localStorage).each(function(index) {
-            console.log(this.length);
-            console.log(index);
-            console.log(localStorage.length);
-        });*/
-
-        /*$('<div>').attr('id', 'items')
-                .appendTo('#view > section')
-        ;
-        $.each(localStorage, function(key, value) {
-            $('<ul>').appendTo('#items');
-            console.log(value);
-            var value = localStorage.getItem(key);
-            var obj = JSON.parse(value);          
-            console.log(value);
-            console.log(obj[0].value);
-            console.log(obj[1].value);
-            $.each(obj, function(index, value) {
-                $('<li>').appendTo('#items > ul');
-                console.log(this.obj);
-                console.log(this.index);
-                console.log(this.value);
-                console.log(value.name);
-                console.log(value.value);
-    			
-    		});
-    	});*/
-
-        
-        /*$.each(localStorage, function(key, value) {
-            $('<div>').attr('id', 'items')
-                .append('<ul>')
-                .appendTo('#view > section')
-            ;
-            console.log(value);
-            ;
-            console.log(localStorage.getItem(key));
-            $.each(JSON.parse(value), function(key, value) {
-                $('<li>').append(value.name + ": " + value.value)
-                    .appendTo('#items > ul')
-                ;
-                console.log(key);
-                console.log(value.name + ": " + value.value);
-            });
-            
-        });*/
+//    $('#view').on('click', function() {
 
         $('<div>').attr('id', 'items')
                   .appendTo('#view > section')
@@ -93,6 +43,9 @@ $('#view').on('pageinit', function() {
             $(Li).appendTo(recipes);
             var subList = $('<ul>');
             $(subList).appendTo(Li);
+            var LinksLi = $('<li><a href="#">Edit</a></li><li><a href="#">Delete</a></li>')
+                             .css('display', 'inline')
+                            ;
             console.log(localStorage.length);
             console.log(key);
             console.log(value);
@@ -104,44 +57,28 @@ $('#view').on('pageinit', function() {
             console.log(obj);
             $(obj).each(function(index, value) {
                 var subLi = ('<li>' + value.name + ": " + value.value + '</li>');
-                    text = (value.name + ": " + value.value);
                 $(subLi).appendTo(subList);
-                console.log(text);
                 console.log(Element);
                 console.log(index);
                 console.log(this);
                 console.log(value.name);
                 console.log(value.value);
-
+                $(LinksLi).appendTo(subList);
             });
-/*            console.log(value);
-            console.log(obj);
-            console.log(obj[0].name);
-            console.log(obj[0].value);
-//            console.log(text);
-            $('<ul>').appendTo('#items')
-//                     .append('<li>')
-                    ;
-//            $('<li>').appendTo('#items > ul')
-//                     .append('<ul>')
-//                    ;
-//            $('<li>').appendTo('#items > ul > li > ul');
-//            console.log(this);
-            $.each(obj, function(i, val) {
-                $('<li>').append(val.name + ": " + val.value)
-                        .appendTo('#items > ul')
-                        ;
-                console.log(i);
-                console.log(val);
-    //                console.log(val.name);
-//                console.log(val.value);
-                console.log(this.name + ": " + this.value);
-                console.log(this);
-            });                                             */
+        
         });
 
+//    });
+    // END #view.on 'click'
+//    console.log(Key);
+    $('#deleteRcp').on('click', function() {
+        $(localStorage).removeItem(this.key);
     });
 
+    $(clearAll).on('click', function() {
+           localStorage.clear(); 
+        });
+        // END #clearAll.on 'click'
 
 
 
