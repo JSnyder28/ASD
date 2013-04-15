@@ -39,11 +39,13 @@ $('#view').on('pageinit', function() {
         console.log(localStorage);
         console.log(localStorage.name);
         $.each(localStorage, function(key, value) {
+            var currentKey = key;
+            console.log(currentKey);
             var Li = $('<li>Recipe</li>');
             $(Li).appendTo(recipes);
             var subList = $('<ul>');
             $(subList).appendTo(Li);
-            var LinksLi = $('<li><a href="#">Edit</a></li><li><a href="#">Delete</a></li>')
+            var LinksLi = $('<li><a id="editRcp" href="#add" data-key="currentKey">Edit</a></li><li><a id="deleteRcp" href="#" data-key="currentKey">Delete</a></li>')
                              .css('display', 'inline')
                             ;
             console.log(localStorage.length);
@@ -70,9 +72,17 @@ $('#view').on('pageinit', function() {
 
 //    });
     // END #view.on 'click'
+
+    /*$(editLinksLi).on('click', function() {
+        var value = localStorage.getItem(key);
+        
+    });
+    // END editLinksLi.on 'click' */
+
 //    console.log(Key);
     $('#deleteRcp').on('click', function() {
-        $(localStorage).removeItem(this.key);
+        localStorage.removeItem(key);
+        window.location.reload();
     });
 
     $(clearAll).on('click', function() {
@@ -84,29 +94,31 @@ $('#view').on('pageinit', function() {
 
 
 
-    $('editRcps').on('click', function() {
+    $('#editRcp').on('click', function(key) {
         // Allows individual recipes to be edited and updated.
+        var currentKey = localStorage.getItem(key);
+        console.log(currentKey);
     });
     // END editRcps.on
 
 
-    	/*$.getJSON('json', function(data) {
+	/*$.getJSON('json', function(data) {
 
-    		var items = [];
+		var items = [];
 
-    		$.each(data, function(key, val) {
-    			items.push('<li id="' + key + '">' + val + '</li>');
+		$.each(data, function(key, val) {
+			items.push('<li id="' + key + '">' + val + '</li>');
 
-    		});
+		});
 
-    		$('<ul/>', {
-    			'class' : 'recipes-list',
-    			html: items.join('')
-    		}).appendTo('#view > section');
-    		//console.log(data);
-    		//console.log(items);
+		$('<ul/>', {
+			'class' : 'recipes-list',
+			html: items.join('')
+		}).appendTo('#view > section');
+		//console.log(data);
+		//console.log(items);
 
-    	});*/
+	});*/
 
 
 });
