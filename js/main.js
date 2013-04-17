@@ -67,16 +67,20 @@ $('#view').on('pageinit', function() {
                 console.log(value.value);
                 // $(LinksLi).appendTo(subList);
             });
-        itemLinks(key, subList);
+        itemLinks(key, value, subList);
 
         });
+    
+    $('#autoFill').on('click', function() {
+                
+    });
 
-    $('#deleteRcp').on('click', function() {
+    /* $('#deleteRcp').on('click', function() {
         var anchors = $('[data-key]');
         console.log(anchors);
         //localStorage.removeItem(this.key);
         //window.location.reload();
-    });
+    }); */
 
 
     $('#clearAll').on('click', function() {
@@ -86,9 +90,9 @@ $('#view').on('pageinit', function() {
         // END #clearAll.on 'click'
 
 
-    $('#editRcp').on('click', function() {
+    /* $('#editRcp').on('click', function() {
         // Allows individual recipes to be edited and updated.
-    });
+    }); */
     // END editRcps.on
 
 
@@ -114,7 +118,7 @@ $('#view').on('pageinit', function() {
 });
 // END view.on 'pageinit'
 
-var itemLinks = function (key, subList) {
+var itemLinks = function (key, value, subList) {
     console.log(key);
     var editItemLi      = $('<li>')
                             .css('display', 'inline')
@@ -123,7 +127,7 @@ var itemLinks = function (key, subList) {
     console.log(editItemLi);
     var editItemAnchor  = $('<a>')
                             .attr({
-                             "href" : "#",
+                             "href" : "#add",
                              "data-key" : key
                             })
                             .html('Edit')
@@ -135,7 +139,25 @@ var itemLinks = function (key, subList) {
     console.log(subList);
     $(editItemAnchor).appendTo(editItemLi);
     // Appends list items to the subList created in the local storage .each loop, and appends the anchors to the list items.
-
+    
+    $(editItemAnchor).on('click', function() {
+        $('#add header > h1').html("Edit Recipe");
+        console.log(key);
+        console.log(value);
+        var obj = JSON.parse(value);
+        console.log(obj);
+        $('#selectChoice1').val();
+        $('#rcpName').val(obj[1].value);
+        $('#txtArea-A').val(obj[2].value);
+        $('#txtArea-B').val(obj[3].value);
+        $('#slider').val(obj[4].value);
+        $('#checkboxFav').attr('checked');
+        $('#addIt').on('click', function() {
+            var data = $('form').serializeArray();
+            localStorage.setItem(key, JSON.stringify(data));
+            alert("Your recipe has been updated");
+        });
+    });
 
     var deleteItemLi       = $('<li>')
                                .css('display', 'inline')
@@ -155,6 +177,18 @@ var itemLinks = function (key, subList) {
     $(deleteItemLi).appendTo(subList);
     $(deleteItemAnchor).appendTo(deleteItemLi);
     // Appends list items to the subList created in the local storage .each loop, and appends the anchors to the list items.
+    
+    $(deleteItemAnchor).on('click', function() {
+        var ask = confirm("Are you sure you would like to delete this recipe?");
+        if (ask) {
+            localStorage.removeItem(key);
+            alert("Recipe has been deleted");
+        } else {
+            alert("Recipe was not deleted");
+        };
+        console.log(key);
+        console.log(value);
+    });
 
 };
 // END itemLinks function
