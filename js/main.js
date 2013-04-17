@@ -45,9 +45,9 @@ $('#view').on('pageinit', function() {
             $(Li).appendTo(recipes);
             var subList = $('<ul>');
             $(subList).appendTo(Li);
-            var LinksLi = $('<li><a id="editRcp" href="#add" data-key="currentKey">Edit</a></li><li><a id="deleteRcp" href="#" data-key="currentKey">Delete</a></li>')
+            /* var LinksLi = $('<li data-key="'+ currentKey +'"><a id="editRcp" href="#">Edit</a></li><li data-key="'+ currentKey +'"><a id="deleteRcp" href="#">Delete</a></li>')
                              .css('display', 'inline')
-                            ;
+                            ; */
             console.log(localStorage.length);
             console.log(key);
             console.log(value);
@@ -65,39 +65,29 @@ $('#view').on('pageinit', function() {
                 console.log(this);
                 console.log(value.name);
                 console.log(value.value);
-                $(LinksLi).appendTo(subList);
+                // $(LinksLi).appendTo(subList);
             });
-        
+        itemLinks(key, subList);
+
         });
 
-//    });
-    // END #view.on 'click'
-
-    /*$(editLinksLi).on('click', function() {
-        var value = localStorage.getItem(key);
-        
-    });
-    // END editLinksLi.on 'click' */
-
-//    console.log(Key);
     $('#deleteRcp').on('click', function() {
-        localStorage.removeItem(key);
-        window.location.reload();
+        var anchors = $('[data-key]');
+        console.log(anchors);
+        //localStorage.removeItem(this.key);
+        //window.location.reload();
     });
 
-    $(clearAll).on('click', function() {
-           localStorage.clear(); 
+
+    $('#clearAll').on('click', function() {
+           localStorage.clear();
+           window.location.reload();
         });
         // END #clearAll.on 'click'
 
 
-
-
-
-    $('#editRcp').on('click', function(key) {
+    $('#editRcp').on('click', function() {
         // Allows individual recipes to be edited and updated.
-        var currentKey = localStorage.getItem(key);
-        console.log(currentKey);
     });
     // END editRcps.on
 
@@ -122,4 +112,53 @@ $('#view').on('pageinit', function() {
 
 
 });
-// END view.on
+// END view.on 'pageinit'
+
+var itemLinks = function (key, subList) {
+    console.log(key);
+    var editItemLi      = $('<li>')
+                            .css('display', 'inline')
+                        ;
+                        // Displays the link inline with the delete link.
+    console.log(editItemLi);
+    var editItemAnchor  = $('<a>')
+                            .attr({
+                             "href" : "#",
+                             "data-key" : key
+                            })
+                            .html('Edit')
+                        ;
+                        // Sets the href and data-key attributes to the anchor.
+    console.log(editItemAnchor);
+    // Creates the list items, and anchors for edit links.
+    $(editItemLi).appendTo(subList);
+    console.log(subList);
+    $(editItemAnchor).appendTo(editItemLi);
+    // Appends list items to the subList created in the local storage .each loop, and appends the anchors to the list items.
+
+
+    var deleteItemLi       = $('<li>')
+                               .css('display', 'inline')
+                           ;
+                           // Displays the link inline with the edit link.
+    console.log(deleteItemLi);
+    var deleteItemAnchor   = $('<a>')
+                               .attr({
+                                "href" : "#",
+                                "data-key" : key
+                               })
+                               .html('Delete')
+                           ;
+                           // Sets the href and data-key attributes to the anchor.
+    console.log(deleteItemAnchor);
+    // Creates the list items, and anchors for the delete links.
+    $(deleteItemLi).appendTo(subList);
+    $(deleteItemAnchor).appendTo(deleteItemLi);
+    // Appends list items to the subList created in the local storage .each loop, and appends the anchors to the list items.
+
+};
+// END itemLinks function
+
+
+
+
