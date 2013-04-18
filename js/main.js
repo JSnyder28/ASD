@@ -72,21 +72,25 @@ $('#view').on('pageinit', function() {
         });
     
     $('#autoFill').on('click', function() {
-                
+        console.log(json);
+        $.each(json, function(key, value) {
+            var id = Math.floor(Math.random(key)*100000001);
+            localStorage.setItem(id, JSON.stringify(value));
+            console.log(json);
+            console.log(id);
+            console.log(value);
+            var jsonObj = value;
+            $.each(jsonObj, function(index, value) {
+                console.log(index);
+                console.log(value);
+            });
+        });
     });
-
-    /* $('#deleteRcp').on('click', function() {
-        var anchors = $('[data-key]');
-        console.log(anchors);
-        //localStorage.removeItem(this.key);
-        //window.location.reload();
-    }); */
-
 
     $('#clearAll').on('click', function() {
            localStorage.clear();
            window.location.reload();
-        });
+    });
         // END #clearAll.on 'click'
 
 
@@ -142,6 +146,10 @@ var itemLinks = function (key, value, subList) {
     
     $(editItemAnchor).on('click', function() {
         $('#add header > h1').html("Edit Recipe");
+        $('#addIt')
+          .val('Update')
+          .attr('id', 'updateIt');
+          ;
         console.log(key);
         console.log(value);
         var obj = JSON.parse(value);
@@ -152,7 +160,8 @@ var itemLinks = function (key, value, subList) {
         $('#txtArea-B').val(obj[3].value);
         $('#slider').val(obj[4].value);
         $('#checkboxFav').attr('checked');
-        $('#addIt').on('click', function() {
+        
+        $('#updateIt').on('click', function() {
             var data = $('form').serializeArray();
             localStorage.setItem(key, JSON.stringify(data));
             alert("Your recipe has been updated");
