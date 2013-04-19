@@ -15,7 +15,7 @@ $('#home').on('pageinit', function() {
     });
     // END a.json.on 'click'
 
-    $('a.xml').on('click', function() {
+    /* $('a.xml').on('click', function() {
         $.ajax({
                 url : "ajax_xml.xml",
                 type : "GET",
@@ -29,7 +29,7 @@ $('#home').on('pageinit', function() {
         recipes = $(data);
     recipes.find("items").each(function() {
         var item = $(this);
-    });
+    }); */
 });
 // END #home.on 'pageinit'
 
