@@ -1,134 +1,100 @@
 // Joshua Snyder
-// ASD 1303
+// ASD 1304
 // Project Week 1
 
 	
 $('#home').on('pageinit', function() {
+    $('a.json').on('click', function() {
+        $.ajax({
+                url : "ajax_json.js",
+                type : "GET",
+                dataType : "json",
+                success : function(data, status) {
+                    console.log(status, data)    
+                }});
+    });
+    // END a.json.on 'click'
 
+    $('a.xml').on('click', function() {
+        $.ajax({
+                url : "ajax_xml.xml",
+                type : "GET",
+                dataType : "xml",
+                success : function(data, status) {
+                    console.log(status, data)
+                }});
+    });
+    // END a.xml.on 'click'
+    var data    = $.parseXML(ajax_xml);
+        recipes = $(data);
+    recipes.find("items").each(function() {
+        var item = $(this);
+    });
 });
-// END
+// END #home.on 'pageinit'
 
 $('#add').on('pageinit', function() {
     // When the add recipe page is ready, run this code.
-    
     $('#addIt').on('click', function(event) {
-
         var data    = $('form').serializeArray();
         var id      = Math.floor(Math.random()*100000001);
-        //console.log(data);
-        //console.log(id);
         localStorage.setItem(id, JSON.stringify(data));
-        //console.log(data);
-        console.log(localStorage.setItem(id, JSON.stringify(data)));
 
-        event.preventDefault();    
+        event.preventDefault();
     });
-});
+    // END #addIt.on 'click'
 
-// END
+});
+// END #add.on 'pageinit'
 
 $('#view').on('pageinit', function() {
-    
-//    $('#view').on('click', function() {
-
-        $('<div>').attr('id', 'items')
-                  .appendTo('#view > section')
-                 ;
-        var recipes = $('<ul>');
-        $(recipes).appendTo('#items');
-        console.log(localStorage);
-        console.log(localStorage.name);
-        $.each(localStorage, function(key, value) {
-            var currentKey = key;
-            console.log(currentKey);
-            var Li = $('<li>Recipe</li>');
-            $(Li).appendTo(recipes);
-            var subList = $('<ul>');
-            $(subList).appendTo(Li);
-            /* var LinksLi = $('<li data-key="'+ currentKey +'"><a id="editRcp" href="#">Edit</a></li><li data-key="'+ currentKey +'"><a id="deleteRcp" href="#">Delete</a></li>')
-                             .css('display', 'inline')
-                            ; */
-            console.log(localStorage.length);
-            console.log(key);
-            console.log(value);
-            console.log(this);
-            console.log(value.name);
-            console.log(value.value);
-            console.log(value);
-            var obj = JSON.parse(value);
-            console.log(obj);
-            $(obj).each(function(index, value) {
-                var subLi = ('<li>' + value.name + ": " + value.value + '</li>');
-                $(subLi).appendTo(subList);
-                console.log(Element);
-                console.log(index);
-                console.log(this);
-                console.log(value.name);
-                console.log(value.value);
-                // $(LinksLi).appendTo(subList);
-            });
-        itemLinks(key, value, subList);
-
+    $('<div>').attr('id', 'items')
+              .appendTo('#view > section')
+             ;
+    var recipes = $('<ul>');
+    $(recipes).appendTo('#items');
+    $.each(localStorage, function(key, value) {
+        var Li = $('<li>Recipe</li>');
+        $(Li).appendTo(recipes);
+        var subList = $('<ul>');
+        $(subList).appendTo(Li);
+        var obj = JSON.parse(value);
+        $(obj).each(function(index, value) {
+            var subLi = ('<li>' + value.name + ": " + value.value + '</li>');
+            $(subLi).appendTo(subList);
         });
+        // END 'obj' .each
+    itemLinks(key, value, subList);
+    });
+    // END .each 'localStorage'
     
     $('#autoFill').on('click', function() {
-        console.log(json);
         $.each(json, function(key, value) {
             var id = Math.floor(Math.random(key)*100000001);
             localStorage.setItem(id, JSON.stringify(value));
-            console.log(json);
-            console.log(id);
-            console.log(value);
             var jsonObj = value;
             $.each(jsonObj, function(index, value) {
-                console.log(index);
-                console.log(value);
             });
+            // END .each 'jsonObj'
         });
+        // END .each 'json'
     });
+    // END #autoFill.on 'click'
 
     $('#clearAll').on('click', function() {
            localStorage.clear();
            window.location.reload();
     });
-        // END #clearAll.on 'click'
-
-
-    /* $('#editRcp').on('click', function() {
-        // Allows individual recipes to be edited and updated.
-    }); */
-    // END editRcps.on
-
-
-	/*$.getJSON('json', function(data) {
-
-		var items = [];
-
-		$.each(data, function(key, val) {
-			items.push('<li id="' + key + '">' + val + '</li>');
-
-		});
-
-		$('<ul/>', {
-			'class' : 'recipes-list',
-			html: items.join('')
-		}).appendTo('#view > section');
-		//console.log(data);
-		//console.log(items);
-
-	});*/
-
+    // END #clearAll.on 'click'
 
 });
 // END view.on 'pageinit'
 
 var itemLinks = function (key, value, subList) {
-    console.log(key);
     var editItemLi      = $('<li>')
                             .css('display', 'inline')
                         ;
                         // Displays the link inline with the delete link.
-    console.log(editItemLi);
     var editItemAnchor  = $('<a>')
                             .attr({
                              "href" : "#add",
@@ -137,10 +103,8 @@ var itemLinks = function (key, value, subList) {
                             .html('Edit')
                         ;
                         // Sets the href and data-key attributes to the anchor.
-    console.log(editItemAnchor);
     // Creates the list items, and anchors for edit links.
     $(editItemLi).appendTo(subList);
-    console.log(subList);
     $(editItemAnchor).appendTo(editItemLi);
     // Appends list items to the subList created in the local storage .each loop, and appends the anchors to the list items.
     
@@ -150,11 +114,8 @@ var itemLinks = function (key, value, subList) {
           .val('Update')
           .attr('id', 'updateIt');
           ;
-        console.log(key);
-        console.log(value);
         var obj = JSON.parse(value);
-        console.log(obj);
-        $('#selectChoice1').val();
+        $('#selectChoice1').val('option:selected');
         $('#rcpName').val(obj[1].value);
         $('#txtArea-A').val(obj[2].value);
         $('#txtArea-B').val(obj[3].value);
@@ -166,13 +127,14 @@ var itemLinks = function (key, value, subList) {
             localStorage.setItem(key, JSON.stringify(data));
             alert("Your recipe has been updated");
         });
+        // END #updateIt.on 'click'
     });
+    //END #editItemAnchor.on 'click'
 
     var deleteItemLi       = $('<li>')
                                .css('display', 'inline')
                            ;
                            // Displays the link inline with the edit link.
-    console.log(deleteItemLi);
     var deleteItemAnchor   = $('<a>')
                                .attr({
                                 "href" : "#",
@@ -181,7 +143,6 @@ var itemLinks = function (key, value, subList) {
                                .html('Delete')
                            ;
                            // Sets the href and data-key attributes to the anchor.
-    console.log(deleteItemAnchor);
     // Creates the list items, and anchors for the delete links.
     $(deleteItemLi).appendTo(subList);
     $(deleteItemAnchor).appendTo(deleteItemLi);
@@ -195,9 +156,9 @@ var itemLinks = function (key, value, subList) {
         } else {
             alert("Recipe was not deleted");
         };
-        console.log(key);
-        console.log(value);
+        // END if
     });
+    // END #deleteItemAnchor.on 'click'
 
 };
 // END itemLinks function
