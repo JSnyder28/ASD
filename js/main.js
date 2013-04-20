@@ -7,32 +7,50 @@ $('#home').on('pageinit', function() {
     // When home page is ready
     $('#jsonData').on('click', function() {
         // When JSON button is clicked
-        $.ajax({
-                url : "ajax_json.js",
-                type : "GET",
-                dataType : "json",
-                success : function(data, status) {
-                    console.log(status, data)    
-                }});
+        /* $.ajax({
+            url: 'xhr/list.js',
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                console.log(response);
+            }
+        }); */
+        $.getJSON('xhr/list.js', function(data) {
+            console.log(data.Recipes[1].Category);
+            for (var i = 0, len = data.Recipes.length; i < len; i++) {
+                var arr = data.Recipes[i];
+                $(''+'<div>'
+                        +'<h4>' + arr.Name + '</h4>'
+                        +'<ul>' + arr.Category
+                            +'<li>' + arr.Directions + '</li>'
+                            +'<li>' + arr.Ingredients + '</li>'
+                            +'<li>' + arr.Favorite + '</li>'
+                            +'<li>' + arr.Rating + '</li>'
+                        +'</ul>'
+                     +'</div>'
+                 )
+                  .appendTo('#view > section')
+                ;
+            };
+        });
     });
     // END jsonData.on 'click'
 
-    /* $('#xmlData').on('click', function() {
+    $('#xmlData').on('click', function() {
         // When XML button is clicked
-        $.ajax({
-                url : "ajax_xml.xml",
-                type : "GET",
-                dataType : "xml",
-                success : function(data, status) {
-                    console.log(status, data)
-                }});
+        /* $.ajax({
+            url: "ajax_xml.xml",
+            type: "GET",
+            dataType: "json",
+            success: function(response) {
+                console.log(response);
+            }
+        }); */
+        $.get('xhr/list.xml', function(data) {
+            console.log(data);
+        });
     });
     // END xmlData.on 'click'
-    var data    = $.parseXML(ajax_xml);
-        recipes = $(data);
-    recipes.find("items").each(function() {
-        var item = $(this);
-    }); */
 });
 // END #home.on 'pageinit'
 
@@ -43,7 +61,6 @@ $('#add').on('pageinit', function() {
         var data    = $('form').serializeArray();
         var id      = Math.floor(Math.random()*100000001);
         localStorage.setItem(id, JSON.stringify(data));
-        console.log(data);
         // Stores the form information to local storage with a key and value. Key is id, generated through math.random. Value is serialized form data.
         /* event.preventDefault();
         // Prevents loading of homepage when add it button is clicked. Development use only. */
@@ -95,6 +112,7 @@ $('#view').on('pageinit', function() {
             localStorage.setItem(id, JSON.stringify(value));
         });
         // END .each 'json'
+        window.location.reload();
     });
     // END #autoFill.on 'click'
 
@@ -135,7 +153,7 @@ var itemLinks = function (key, value, subList) {
           ;
           // Changes the value of addIt button for editing items, and gives it an id.
         var obj = JSON.parse(value);
-        $('#selectChoice1').val();
+        $('#selectChoice1 option:selected').val(obj[0].value);
         $('#rcpName').val(obj[1].value);
         $('#txtArea-A').val(obj[2].value);
         $('#txtArea-B').val(obj[3].value);
