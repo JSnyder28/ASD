@@ -4,7 +4,9 @@
 
 	
 $('#home').on('pageinit', function() {
-    $('a.json').on('click', function() {
+    // When home page is ready
+    $('#jsonData').on('click', function() {
+        // When JSON button is clicked
         $.ajax({
                 url : "ajax_json.js",
                 type : "GET",
@@ -13,9 +15,10 @@ $('#home').on('pageinit', function() {
                     console.log(status, data)    
                 }});
     });
-    // END a.json.on 'click'
+    // END jsonData.on 'click'
 
-    /* $('a.xml').on('click', function() {
+    /* $('#xmlData').on('click', function() {
+        // When XML button is clicked
         $.ajax({
                 url : "ajax_xml.xml",
                 type : "GET",
@@ -24,7 +27,7 @@ $('#home').on('pageinit', function() {
                     console.log(status, data)
                 }});
     });
-    // END a.xml.on 'click'
+    // END xmlData.on 'click'
     var data    = $.parseXML(ajax_xml);
         recipes = $(data);
     recipes.find("items").each(function() {
@@ -34,26 +37,44 @@ $('#home').on('pageinit', function() {
 // END #home.on 'pageinit'
 
 $('#add').on('pageinit', function() {
-    // When the add recipe page is ready, run this code.
+    // When add recipe page is ready
     $('#addIt').on('click', function(event) {
+        // When add it button is clicked
         var data    = $('form').serializeArray();
         var id      = Math.floor(Math.random()*100000001);
         localStorage.setItem(id, JSON.stringify(data));
-
-        event.preventDefault();
+        console.log(data);
+        // Stores the form information to local storage with a key and value. Key is id, generated through math.random. Value is serialized form data.
+        /* event.preventDefault();
+        // Prevents loading of homepage when add it button is clicked. Development use only. */
     });
     // END #addIt.on 'click'
+
+    $('#updateIt').on('click', function() {
+        // When update it button is clicked
+        // Update it is originally add it button. Value changed for editing item purposes.
+            var data = $('form').serializeArray();
+                id   = $('[data-key]').val();
+            localStorage.setItem(id, JSON.stringify(data));
+            // Save new info to same local storage key. data-key val assigned during item links creation.
+            alert("Your recipe has been updated");
+        });
+        // END #updateIt.on 'click'
 
 });
 // END #add.on 'pageinit'
 
 $('#view').on('pageinit', function() {
+    // When view page is ready
     $('<div>').attr('id', 'items')
               .appendTo('#view > section')
              ;
+             // Create div, give it an id of items, append it to the view page section tag.
     var recipes = $('<ul>');
     $(recipes).appendTo('#items');
+    // Create unordered list, append it to items div.
     $.each(localStorage, function(key, value) {
+        // For each item in local storage.
         var Li = $('<li>Recipe</li>');
         $(Li).appendTo(recipes);
         var subList = $('<ul>');
@@ -72,10 +93,6 @@ $('#view').on('pageinit', function() {
         $.each(json, function(key, value) {
             var id = Math.floor(Math.random(key)*100000001);
             localStorage.setItem(id, JSON.stringify(value));
-            var jsonObj = value;
-            $.each(jsonObj, function(index, value) {
-            });
-            // END .each 'jsonObj'
         });
         // END .each 'json'
     });
@@ -109,25 +126,22 @@ var itemLinks = function (key, value, subList) {
     // Appends list items to the subList created in the local storage .each loop, and appends the anchors to the list items.
     
     $(editItemAnchor).on('click', function() {
+        // When edit link is clicked
         $('#add header > h1').html("Edit Recipe");
+        // Changes the title of the Add Recipe page to Edit Recipe.
         $('#addIt')
           .val('Update')
           .attr('id', 'updateIt');
           ;
+          // Changes the value of addIt button for editing items, and gives it an id.
         var obj = JSON.parse(value);
-        $('#selectChoice1').val('option:selected');
+        $('#selectChoice1').val();
         $('#rcpName').val(obj[1].value);
         $('#txtArea-A').val(obj[2].value);
         $('#txtArea-B').val(obj[3].value);
         $('#slider').val(obj[4].value);
         $('#checkboxFav').attr('checked');
-        
-        $('#updateIt').on('click', function() {
-            var data = $('form').serializeArray();
-            localStorage.setItem(key, JSON.stringify(data));
-            alert("Your recipe has been updated");
-        });
-        // END #updateIt.on 'click'
+        // Parse and populate the form fields with individual item info, from local storage.
     });
     //END #editItemAnchor.on 'click'
 
@@ -149,6 +163,7 @@ var itemLinks = function (key, value, subList) {
     // Appends list items to the subList created in the local storage .each loop, and appends the anchors to the list items.
     
     $(deleteItemAnchor).on('click', function() {
+        // When delete link is clicked
         var ask = confirm("Are you sure you would like to delete this recipe?");
         if (ask) {
             localStorage.removeItem(key);
