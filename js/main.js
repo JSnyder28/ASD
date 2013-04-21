@@ -27,7 +27,7 @@ $('#home').on('pageinit', function() {
                             +'<li>' + arr.Favorite + '</li>'
                             +'<li>' + arr.Rating + '</li>'
                         +'</ul>'
-                     +'</div>'
+                    +'</div>'
                  )
                   .appendTo('#view > section')
                 ;
@@ -46,8 +46,17 @@ $('#home').on('pageinit', function() {
                 console.log(response);
             }
         }); */
-        $.get('xhr/list.xml', function(data) {
-            console.log(data);
+        /* xmlhttp=new XMLHttpRequest();
+        if (window.XMLHttpRequest) {
+            xmlhttp=new XMLHttpRequest();
+        } else {
+            xmlhttp=new ActiveXObject ('Microsoft.XMLHTTP');
+        };
+        xmlhttp.open('GET', 'xhr/list.xml', false);
+        xmlhttp.send();
+        xmlDoc=xmlhttp.responseXML; */
+        $('#view > section').load('xhr/list.xml', function(data, status) {
+            console.log(data, status);
         });
     });
     // END xmlData.on 'click'
@@ -70,13 +79,18 @@ $('#add').on('pageinit', function() {
     $('#updateIt').on('click', function() {
         // When update it button is clicked
         // Update it is originally add it button. Value changed for editing item purposes.
-            var data = $('form').serializeArray();
-                id   = $('[data-key]').val();
-            localStorage.setItem(id, JSON.stringify(data));
-            // Save new info to same local storage key. data-key val assigned during item links creation.
-            alert("Your recipe has been updated");
-        });
-        // END #updateIt.on 'click'
+        var data = $('form').serializeArray();
+            id   = $('[data-key]').val();
+        localStorage.setItem(id, JSON.stringify(data));
+        // Save new info to same local storage key. data-key val assigned during item links creation.
+        alert("Your recipe has been updated");
+    });
+    // END #updateIt.on 'click'
+    
+    $('#cancelIt').on('click', function() {
+        window.location.reload();
+    });
+    // END #cancelIt.on 'click'
 
 });
 // END #add.on 'pageinit'
@@ -148,7 +162,7 @@ var itemLinks = function (key, value, subList) {
         $('#add header > h1').html("Edit Recipe");
         // Changes the title of the Add Recipe page to Edit Recipe.
         $('#addIt')
-          .val('Update')
+          .text('Update')
           .attr('id', 'updateIt');
           ;
           // Changes the value of addIt button for editing items, and gives it an id.

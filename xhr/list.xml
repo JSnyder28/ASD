@@ -1,45 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<list>
-	<items>
-		<item1>
-			<category>Seasonal</category>
-			<name>Sugar Cookies</name>
-			<directions>Mix ingredients in a bowl, stir until doughy, roll out dough and use desired cookie cutter. Place in oven on 350 for 20 mins, or until golden brown.</directions>
-			<ingredients>Eggs, flour, sugar, vanilla, choice of cooking oil.</ingredients>
-			<favorite>Yes</favorite>
-			<rating>5</rating>
-		</item1>
-		<item2>
-			<category>American</category>
-			<name>Chili Dog</name>
-			<directions>1 package of Hot Dog Weiners, 1 package Hot Dog Buns, 1 can of Chili, 1 cup American cheese, 1 Onion, Mustard, Relish.</directions>
-			<ingredients>Preheat Grill or Indoor Skillet to Medium. While weiners grill, heat can of Chili. Once Hot Dogs are done, top with desired fixings.</ingredients>
-			<favorite>Yes</favorite>
-			<rating>5</rating>
-		</item2>
-		<item3>
-			<category>Japanese</category>
-			<name>Vegetable Sushi Rolls</name>
-			<directions>Sushi: 1/3 cup seasoned rice vinegar, 2 teaspoons sugar, 1 teaspoon salt, 1 1/2 cups short-grained sushi rice, 1 1/2 cups water, 4 sheets toasted nori. Fillings (pick 3 to 4): 1 kirby cucumberor 1/2 regular cucumber, seede and cut into matchsticks, 1 carrot, cut into matchsticks, 1 small yellow bell pepper, stemmed, seeded and cut into matchsticks, 4 scallions, trimmed and cut into matchsticks, 1 (4-inch) oiece daikon, peeled, and cut into matchsticks (or pickled daikon or 6 red radishes), 1/2 firm-ripe Hass avocado, peeled, thinly sliced lengthwise, sprinkled with lemon juice, Soy sauce, Special equipment: Bamboo sushi mat.</directions>
-			<ingredients>For the rice: rinse the rice in colander and drain. Put the rice and water in medium saucepan with tight fitting lid. Bring to a boil over high heat, reduce heat to very low and simmer, tightly covered. (For a good seal wrap the pan's lid tightly with a small kitchen towel and cover saucepan. Make sure the towel's edges are folded up well away form the heat). Cook until all the water is absorbed, about 15 minutes. Remove the rice from the heat (don't uncover) and set aside for 10 minutes. fluff the rice with a fork and transfer it to a large bowl. Add the vinegar mixture and toss with the rice, using a wooden spoon. Spread it out on a parchment paper-lined baking sheet. Fan the rice continously with a fan or magazine until cooled. Cover the rice with a damp towel. To assemble rolls: Place the sushi mat with the slats running crosswise directly in front of you on a clean work spae. Lay a sheet of nori shiny-side down and lined up with the closest edge of the mat. Lightly moisten fingers with water, and evenly press about 1/4 of the rice onto the nori, with 1 1/2 inches uncovered as the far edge. Line up the fillings about 1-inch from the closest near edge, evenly across the rice. Leave 1-inch of rice uncovered at the far edge. Beginning with the near edge of the mat, tightly roll up the nori, and fillings into a cylinder. Firmly tug on the rounded mat over the roll as you pull on the far edge of the mat to tighten the roll. Open the mat, dab unsealed edge of nori with a bit of water and roll the sushi forward to seal. Transfer the sushi to a plate and cover with damp paper towels. Repeat with remaining rice and fillings. Cut each sushi roll, crosswise, into 8 pieces with a sharp wet knife. Serve with a bowl of soy sauce for dipping.</ingredients>
-			<favorite>No</favorite>
-			<rating>4</rating>
-		</item3>
-		<item4>
-			<category>Italian</category>
-			<name>Mama's Lasagna</name>
-			<directions>1 tablespoon olive oil, plus extra for pan, 1 pund ground beef or turkey, 1 medium onion, chopped, 1 clove, garlic, minced, 1 (14.5 ounce) can stewed tomatoes, chopped, 1 (8 ounce) jar tomato sauce, 1 (6 ounce) can tomato paste, 1 (8 ounce) box no-boil lasagna noodles, 2 large eggs, 2 cups cottage cheese, 1/2 cup grated Parmesan, 2 teaspoons freshly chopped parsely leaves, 1 teaspoon salt, 1 teaspoon black pepper, 1 teaspoon seasoning salt, 1 (8 ounce) bag shredded mozzerella, 1 (8 ounce) bag shredded Cheddar.</directions>
-			<ingredients>Preheat oven to 375 degrees F. Lightly oil the bottom of a 13 by 9 by 2-inch baking dish. In a large saute pan, over medium-high heat, add 1 tablespoon oil and saute meat, onion, and garlic until meat is browned, breaking up meat with a wooden spoon. Drain pan of fat and add stewed tomatoes, tomato sauce, and tomato paste. Cover and simmer for 15 minutes, stirring occasionally. In a large bowl, whisk together eggs, then mix in cottage cheese, 1/2 cup Parmesan, parsely, salt, pepper, and seasoning salt. Spread a little of the meat sauce in the bottom of the prepared pan. Lay half the noodles in the bottom of the baking dish, overlapping by 1/2-inch. Soread half the egg and cottage cheese mixture evenly on top. Sprinkle half the mozzarella and Cheddar evenly over the cottage cheese mixture. Pour half the meat sauce on top. Repeat layering in same order. Sprinkle remaining 1/4 cup Parmesan on top. Bake in center of oven for 30-35 minutes until sauce is bubbling around the edges. Let stand 10 minutes before serving.</ingredients>
-			<favorite>Yes</favorite>
-			<rating>5</rating>
-		</item4>
-		<item5>
-			<category>Chinese</category>
-			<name>Egg Rolls</name>
-			<directions>4 tablespoons vegetable oil, 1-inch grated fresh ginger, 2 cloves garlic, finely chopped, 2 scallions, sliced thinly, 1 carrot, cut into 1-inch julienne strips, 1 small red pepper, cut itno 1-inch julienne strips, 1 cup Napa cabbage, shredded, 1/4 cup chicken broth, 2 tablespoons reduced-sodium soy sauce, 1 tablespoon sesame oil, 20 wonton wrappers covered loosely with a damp paper towel to prevent drying, 10 shrimps, cooked and minced.</directions>
-			<ingredients>In a wok or skillet, str-fry the ginger and garlic in 2 tablespoons of oil until fragrant, about 30 seconds. Add scallions, carrots, and red pepper and stir-fry over high heat for 2 minutes. In a bowl, combine the chicken broth, soy sauce, and sugar. Add the Nappa cabbage and broth mixture. Bring to a boil and simmer 5 minutes, stirring occasionally, until the vegetables are soft. Add sesame oil, cool for at least 15 minutes, and strain. fold in minced shrimp. Fill and roll the egg roll wrappers, using 1 tablespoon of filling for each roll. Working with 1 wonton wrapper at a time, place the wrapper with one corner of the diamond closest to you. Place 1 teaspoon of the filling in the center of the wrapper. Roll the corner closest to you over the filling. Brush the top corner with water. Fold the sides of the wonton and continue rolling the egg roll up until it is closed. Press to seal, set aside, and continue with the remaining ingredients. In a skillet over moderately high heat, heat the remaining oil and saute the egg rolls until golden rown on all sides, using tongs to turn them. Serve when cool enough to eat, with dipping sauce of choice.</ingredients>
-			<favorite>No</favorite>
-			<rating>5</rating>
-		</item5>
-	</items>
-</list>
+<items>
+	<item>
+		<category>Seasonal</category>
+		<rcpName>Sugar Cookies</rcpName>
+		<directions>Mix ingredients in a bowl, stir until doughy, roll out dough and use desired cookie cutter. Place in oven on 350 for 20 mins, or until golden brown.</directions>
+		<ingredients>Eggs, flour, sugar, vanilla, choice of cooking oil.</ingredients>
+		<favorite>Yes</favorite>
+		<rating>5</rating>
+	</item>
+	<item>
+		<category>American</category>
+		<rcpName>Chili Dog</rcpName>
+		<directions>1 package of Hot Dog Weiners, 1 package Hot Dog Buns, 1 can of Chili, 1 cup American cheese, 1 Onion, Mustard, Relish.</directions>
+		<ingredients>Preheat Grill or Indoor Skillet to Medium. While weiners grill, heat can of Chili. Once Hot Dogs are done, top with desired fixings.</ingredients>
+		<favorite>Yes</favorite>
+		<rating>5</rating>
+	</item>
+	<item>
+		<category>Japanese</category>
+		<rcpName>Vegetable Sushi Rolls</rcpName>
+		<directions>Sushi: 1/3 cup seasoned rice vinegar, 2 teaspoons sugar, 1 teaspoon salt, 1 1/2 cups short-grained sushi rice, 1 1/2 cups water, 4 sheets toasted nori. Fillings (pick 3 to 4): 1 kirby cucumberor 1/2 regular cucumber, seede and cut into matchsticks, 1 carrot, cut into matchsticks, 1 small yellow bell pepper, stemmed, seeded and cut into matchsticks, 4 scallions, trimmed and cut into matchsticks, 1 (4-inch) oiece daikon, peeled, and cut into matchsticks (or pickled daikon or 6 red radishes), 1/2 firm-ripe Hass avocado, peeled, thinly sliced lengthwise, sprinkled with lemon juice, Soy sauce, Special equipment: Bamboo sushi mat.</directions>
+		<ingredients>For the rice: rinse the rice in colander and drain. Put the rice and water in medium saucepan with tight fitting lid. Bring to a boil over high heat, reduce heat to very low and simmer, tightly covered. (For a good seal wrap the pan's lid tightly with a small kitchen towel and cover saucepan. Make sure the towel's edges are folded up well away form the heat). Cook until all the water is absorbed, about 15 minutes. Remove the rice from the heat (don't uncover) and set aside for 10 minutes. fluff the rice with a fork and transfer it to a large bowl. Add the vinegar mixture and toss with the rice, using a wooden spoon. Spread it out on a parchment paper-lined baking sheet. Fan the rice continously with a fan or magazine until cooled. Cover the rice with a damp towel. To assemble rolls: Place the sushi mat with the slats running crosswise directly in front of you on a clean work spae. Lay a sheet of nori shiny-side down and lined up with the closest edge of the mat. Lightly moisten fingers with water, and evenly press about 1/4 of the rice onto the nori, with 1 1/2 inches uncovered as the far edge. Line up the fillings about 1-inch from the closest near edge, evenly across the rice. Leave 1-inch of rice uncovered at the far edge. Beginning with the near edge of the mat, tightly roll up the nori, and fillings into a cylinder. Firmly tug on the rounded mat over the roll as you pull on the far edge of the mat to tighten the roll. Open the mat, dab unsealed edge of nori with a bit of water and roll the sushi forward to seal. Transfer the sushi to a plate and cover with damp paper towels. Repeat with remaining rice and fillings. Cut each sushi roll, crosswise, into 8 pieces with a sharp wet knife. Serve with a bowl of soy sauce for dipping.</ingredients>
+		<favorite>No</favorite>
+		<rating>4</rating>
+	</item>
+	<item>
+		<category>Italian</category>
+		<rcpName>Mama's Lasagna</rcpName>
+		<directions>1 tablespoon olive oil, plus extra for pan, 1 pund ground beef or turkey, 1 medium onion, chopped, 1 clove, garlic, minced, 1 (14.5 ounce) can stewed tomatoes, chopped, 1 (8 ounce) jar tomato sauce, 1 (6 ounce) can tomato paste, 1 (8 ounce) box no-boil lasagna noodles, 2 large eggs, 2 cups cottage cheese, 1/2 cup grated Parmesan, 2 teaspoons freshly chopped parsely leaves, 1 teaspoon salt, 1 teaspoon black pepper, 1 teaspoon seasoning salt, 1 (8 ounce) bag shredded mozzerella, 1 (8 ounce) bag shredded Cheddar.</directions>
+		<ingredients>Preheat oven to 375 degrees F. Lightly oil the bottom of a 13 by 9 by 2-inch baking dish. In a large saute pan, over medium-high heat, add 1 tablespoon oil and saute meat, onion, and garlic until meat is browned, breaking up meat with a wooden spoon. Drain pan of fat and add stewed tomatoes, tomato sauce, and tomato paste. Cover and simmer for 15 minutes, stirring occasionally. In a large bowl, whisk together eggs, then mix in cottage cheese, 1/2 cup Parmesan, parsely, salt, pepper, and seasoning salt. Spread a little of the meat sauce in the bottom of the prepared pan. Lay half the noodles in the bottom of the baking dish, overlapping by 1/2-inch. Soread half the egg and cottage cheese mixture evenly on top. Sprinkle half the mozzarella and Cheddar evenly over the cottage cheese mixture. Pour half the meat sauce on top. Repeat layering in same order. Sprinkle remaining 1/4 cup Parmesan on top. Bake in center of oven for 30-35 minutes until sauce is bubbling around the edges. Let stand 10 minutes before serving.</ingredients>
+		<favorite>Yes</favorite>
+		<rating>5</rating>
+	</item>
+	<item>
+		<category>Chinese</category>
+		<rcpName>Egg Rolls</rcpName>
+		<directions>4 tablespoons vegetable oil, 1-inch grated fresh ginger, 2 cloves garlic, finely chopped, 2 scallions, sliced thinly, 1 carrot, cut into 1-inch julienne strips, 1 small red pepper, cut itno 1-inch julienne strips, 1 cup Napa cabbage, shredded, 1/4 cup chicken broth, 2 tablespoons reduced-sodium soy sauce, 1 tablespoon sesame oil, 20 wonton wrappers covered loosely with a damp paper towel to prevent drying, 10 shrimps, cooked and minced.</directions>
+		<ingredients>In a wok or skillet, str-fry the ginger and garlic in 2 tablespoons of oil until fragrant, about 30 seconds. Add scallions, carrots, and red pepper and stir-fry over high heat for 2 minutes. In a bowl, combine the chicken broth, soy sauce, and sugar. Add the Nappa cabbage and broth mixture. Bring to a boil and simmer 5 minutes, stirring occasionally, until the vegetables are soft. Add sesame oil, cool for at least 15 minutes, and strain. fold in minced shrimp. Fill and roll the egg roll wrappers, using 1 tablespoon of filling for each roll. Working with 1 wonton wrapper at a time, place the wrapper with one corner of the diamond closest to you. Place 1 teaspoon of the filling in the center of the wrapper. Roll the corner closest to you over the filling. Brush the top corner with water. Fold the sides of the wonton and continue rolling the egg roll up until it is closed. Press to seal, set aside, and continue with the remaining ingredients. In a skillet over moderately high heat, heat the remaining oil and saute the egg rolls until golden rown on all sides, using tongs to turn them. Serve when cool enough to eat, with dipping sauce of choice.</ingredients>
+		<favorite>No</favorite>
+		<rating>5</rating>
+	</item>
+</items>
