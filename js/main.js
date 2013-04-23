@@ -68,24 +68,13 @@ $('#add').on('pageinit', function() {
     $('#addIt').on('click', function(event) {
         // When add it button is clicked
         var data    = $('form').serializeArray();
-        var id      = Math.floor(Math.random()*100000001);
+            id      = Math.floor(Math.random()*100000001);
         localStorage.setItem(id, JSON.stringify(data));
         // Stores the form information to local storage with a key and value. Key is id, generated through math.random. Value is serialized form data.
         /* event.preventDefault();
         // Prevents loading of homepage when add it button is clicked. Development use only. */
     });
     // END #addIt.on 'click'
-
-    $('#updateIt').on('click', function() {
-        // When update it button is clicked
-        // Update it is originally add it button. Value changed for editing item purposes.
-        var data = $('form').serializeArray();
-            id   = $('[data-key]').val();
-        localStorage.setItem(id, JSON.stringify(data));
-        // Save new info to same local storage key. data-key val assigned during item links creation.
-        alert("Your recipe has been updated");
-    });
-    // END #updateIt.on 'click'
     
     $('#cancelIt').on('click', function() {
         window.location.reload();
@@ -162,7 +151,8 @@ var itemLinks = function (key, value, subList) {
         $('#add header > h1').html("Edit Recipe");
         // Changes the title of the Add Recipe page to Edit Recipe.
         $('#addIt')
-          .text('Update')
+          .val('Update')
+          .html('Update')
           .attr('id', 'updateIt');
           ;
           // Changes the value of addIt button for editing items, and gives it an id.
@@ -171,9 +161,23 @@ var itemLinks = function (key, value, subList) {
         $('#rcpName').val(obj[1].value);
         $('#txtArea-A').val(obj[2].value);
         $('#txtArea-B').val(obj[3].value);
-        $('#slider').val(obj[4].value);
-        $('#checkboxFav').attr('checked');
+        $('#slider').val(obj[5].value);
+        $('#checkboxFav').prop(obj[4].value);
+        console.log(obj[5].value);
+        console.log(obj[4].value);
         // Parse and populate the form fields with individual item info, from local storage.
+
+        $('#updateIt').on('click', function() {
+        // When update it button is clicked
+        // Update it is originally add it button. Value changed for editing item purposes.
+            // var data = $('form').serializeArray();
+                // id   = $('[data-key]');
+            localStorage.setItem(key, JSON.stringify(value));
+            // console.log(key, value);
+            // Save new info to same local storage key. data-key val assigned during item links creation.
+            alert("Your recipe has been updated");
+        });
+        // END #updateIt.on 'click'
     });
     //END #editItemAnchor.on 'click'
 
