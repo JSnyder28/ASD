@@ -13,6 +13,15 @@ $('#view').on('pageinit', function() {
 						directions 	= recipe.value.directions;
 						favorite 	= recipe.value.favorite;
 						rating 		= recipe.value.rating;
+					$('<ul id="recipeItems">' + category 
+					  + '<li>' + name + '</li>'
+					  + '<li>' + ingredients + '</li>'
+					  + '<li>' + directions + '</li>'
+					  + '<li>' + favorite + '</li>'
+					  + '<li>' + rating + '</li>'
+					 + '</ul>')
+					 .appendTo('#view > section')
+					;
 				});
 			}
 		});
