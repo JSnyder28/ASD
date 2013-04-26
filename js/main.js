@@ -170,9 +170,9 @@ var itemLinks = function (key, value, subList) {
         $('#updateIt').on('click', function() {
         // When update it button is clicked
         // Update it is originally add it button. Value changed for editing item purposes.
-            // var data = $('form').serializeArray();
-                // id   = $('[data-key]');
-            localStorage.setItem(key, JSON.stringify(value));
+            var data = $('form').serializeArray();
+                id   = key;
+            localStorage.setItem(id, JSON.stringify(value));
             // console.log(key, value);
             // Save new info to same local storage key. data-key val assigned during item links creation.
             alert("Your recipe has been updated");
