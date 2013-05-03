@@ -49,13 +49,14 @@
 			<section id="dataButtons">
 				<a href="#view"><input type="button" data-mini="true" data-inline="true" id="jsonData" value="json" /></a>
 				<a href="#view"><input type="button" data-mini="true" data-inline="true" id="xmlData" value="xml" /></a>
+				<a href="#view"><input type="button" data-mini="true" data-inline="true" id="phpData" value="PHP" /></a>
 			</section>
 			<footer data-role="footer" data-position="fixed">
 				<nav data-role="navbar">
 					<ul>
-						<li><a href="#home">Home</a></li>
-						<li><a href="#add">Add</a></li>
-						<li><a href="#view">View</a></li>
+						<li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="#add"data-icon="plus" >Add</a></li>
+						<li><a href="#view"data-icon="bars" >View</a></li>
 					</ul>
 				</nav>
 			</footer>
@@ -109,8 +110,8 @@
 								</fieldset>
 							</div>
 							<section id="buttons">
-								<input type="submit" value="Add It!" id="addIt" />
-								<input type="reset" value="Cancel" id="cancelIt" />
+								<input type="submit" value="Add It!" id="addIt" data-icon="check" />
+								<input type="reset" value="Cancel" id="cancelIt" data-mini="true" data-icon="delete" />
 							</section>
 						</section>
 					</fieldset>
@@ -121,9 +122,9 @@
 			<footer data-role="footer" data-position="fixed">
 				<nav data-role="navbar">
 					<ul>
-						<li><a href="#home">Home</a></li>
-						<li><a href="#edit">Edit</a></li>
-						<li><a href="#view">View</a></li>
+						<li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="#edit" data-icon="edit">Edit</a></li>
+						<li><a href="#view" data-icon="bars">View</a></li>
 					</ul>
 				</nav>
 			</footer>
@@ -137,15 +138,15 @@
 			<section data-role="content">
 			</section>
 			<div>
-				<input type="reset" value="Clear Recipes" id="clearAll" />
+				<input type="reset" value="Clear Recipes" id="clearAll" data-mini="true" data-icon="delete" />
 				<input type="submit" value="Autofill" id="autoFill" />
 			</div>
 			<footer data-role="footer" data-position="fixed">
 				<nav data-role="navbar">
 					<ul>
-						<li><a href="#home">Home</a></li>
-						<li><a href="#add">Add</a></li>
-						<li><a href="#view">View</a></li>
+						<li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="#add" data-icon="plus">Add</a></li>
+						<li><a href="#view" data-icon="bars">View</a></li>
 					</ul>
 				</nav>
 			</footer>
