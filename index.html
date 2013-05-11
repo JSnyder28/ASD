@@ -1,165 +1,134 @@
 <!DOCTYPE html>
 <!-- Joshua Snyder -->
-<!-- ASD 1303 -->
-<!-- Project Week 1 -->
+<!-- ASD 1305 -->
+<!-- Project Week 2 -->
 
 <html>
+	
+	<!-- START head -->
+	<head>
 
-	<!-- BEGIN head -->
-	<head> 
-		
-		<!-- BEGIN meta -->
-		<meta name="viewport" content="width=device-width, initial-scale=1" /> 
-		<meta charset="utf-8" />
-		<!-- END meta -->
+		<title>Recipes!</title>
 
-		<title>Recipes!</title> 
+		<!-- START meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- END head -->
 
-		<!-- BEGIN stylesheets -->
-		<!-- <link rel="stylesheet" href="css/themes/purple.min.css"> -->
-		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
-		<link rel="stylesheet" href="css/style.css" />
-		<!-- END stylesheets -->
+		<!-- START stylesheet -->
+		<link rel="stylesheet" type="text/css" href="jquery.mobile.structure-1.3.1.css">
+		<link rel="stylesheet" type="text/css" href="jquery.mobile-1.3.1.css">
+		<link rel="stylesheet" type="text/css" href="jquery.mobile.theme-1.3.1.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<!-- END head -->
 
-		<!-- Modernizr script -->
-		<!-- <script src="js/libs/modernizr.custom.min.js"></script> -->
 
 	</head>
 	<!-- END head -->
 
-	<!-- BEGIN body -->
+	<!-- START body -->
 	<body>
 
-		<!-- BEGIN homepage -->
-		<section id="home" data-role="page">
-			<header data-role="header" data-position="fixed">
-				<h1>Recipes!</h1>
-			</header>
-			<div class="content" data-role="content">
-				<h3>Categories:</h3>
-				<ul data-role="listview">
-					<li><a href="#americanRcps" id="american">American</a></li>
-					<li><a href="#">Chinese</a></li>
-					<li><a href="#">Italian</a></li>
-					<li><a href="#">Japanese</a></li>
-					<li><a href="#">Mexican</a></li>
-					<li><a href="#">Seasonal</a></li>
+		<!-- START homepage -->
+		<div data-role="page" id="home">
+			
+			<!-- START header -->
+			<div data-role="header" data-postition="fixed">
+				
+				<!-- START ul -->
+				<ul>
+					<li><h1>Recipes!</h1></li>
 				</ul>
+				<!-- END ul -->
+			
 			</div>
-			<section id="dataButtons">
-				<a href="#view"><input type="button" data-mini="true" data-inline="true" id="jsonData" value="json" /></a>
-				<a href="#view"><input type="button" data-mini="true" data-inline="true" id="xmlData" value="xml" /></a>
-			</section>
-			<footer data-role="footer" data-position="fixed">
-				<nav data-role="navbar">
+			<!-- END header -->
+
+			<!-- START footer -->
+			<div data-role="footer" data-position="fixed" data-id="home">
+
+				<!-- START section -->
+				<section data-role="navbar">
+					
+					<!-- START ul -->
 					<ul>
-						<li><a href="#home">Home</a></li>
-						<li><a href="#add">Add</a></li>
-						<li><a href="#view">View</a></li>
+						<li><a href="" data-icon="home" class="ui-btn-active"></a>Home</li>
+						<li><a href="" data-icon="plus"></a>Add</li>
+						<li><a href="" data-icon="bars"></a>View</li>
 					</ul>
-				</nav>
-			</footer>
-		</section>
+					<!-- END ul -->
+				
+				</section>
+				<!-- END section -->
+
+			</div>
+			<!-- END footer -->
+		
+		</div>
 		<!-- END homepage -->
 
-		<!-- BEGIN add page -->
-		<section id="add" data-role="page">
-			<header data-role="header" data-position="fixed">
-				<h1>Add Recipe!</h1>
-			</header>
-			<section data-role="content">
-
-				<!-- BEGIN new recipe form -->
-				<form action="#" method="post" id="newRcpForm">
-					<fieldset>
-						<section>
-							<div id="select">
-								<label for="selectChoice1" class="select">Categories:</label>
-								<select name="Category" id="selectChoice1">
-									<option value="" data-placeholder="true">Choose a Category:</option>
-									<option value="American">American</option>
-									<option value="Chinese">Chinese</option>
-									<option value="Italian">Italian</option>
-									<option value="Japanese">Japanese</option>
-									<option value="Mexican">Mexican</option>
-									<option value="Seasonal">Seasonal</option>
-								</select>
-							</div>
-						</section>
-						<section>
-							<div id="txt-inputs">
-								<label for="rcpName">Recipe Name:</label>
-								<input type="text" name="Recipe" id="rcpName" value="" />
-
-								<label for="txtArea-A">Ingredients:</label>
-								<textarea name="Ingredients" id="txtArea-A" value=""></textarea>
-
-								<label for="txtArea-B">Directions:</label>
-								<textarea name="Directions" id="txtArea-B" value=""></textarea>
-							</div>
-							<div>
-								<label for="slider">Rate It?:</label>
-								<input type="range" name="Rating" id="slider" value="3" min="1" max="5" />
-							</div>
-							<div data-role="fieldcontain">
-								<fieldset data-role="controlgroup">
-									<legend>Go To Meal?</legend>
-									<input type="checkbox" checked="unchecked" name="Favorite" id="checkboxFav" />
-									<label for="checkboxFav">Yes</label>
-								</fieldset>
-							</div>
-							<section id="buttons">
-								<input type="submit" value="Add It!" id="addIt" />
-								<input type="reset" value="Cancel" id="cancelIt" />
-							</section>
-						</section>
-					</fieldset>
-				</form>
-				<!-- END new recipe form -->
+		<!-- START add page -->
+		<div data-role="page" id="home">
 			
-			</section>
-			<footer data-role="footer" data-position="fixed">
-				<nav data-role="navbar">
-					<ul>
-						<li><a href="#home">Home</a></li>
-						<li><a href="#edit">Edit</a></li>
-						<li><a href="#view">View</a></li>
-					</ul>
-				</nav>
-			</footer>
-		</section>
-		<!-- END page -->
-
-		<section id="view" data-role="page">
-			<header data-role="header" data-position="fixed">
-				<h1>My Recipes!</h1>
-			</header>
-			<section data-role="content">
-			</section>
-			<div>
-				<input type="reset" value="Clear Recipes" id="clearAll" />
-				<input type="submit" value="Autofill" id="autoFill" />
+			<!-- START header -->
+			<div data-role="header" data-postition="fixed">
+				
+				<!-- START ul -->
+				<ul>
+					<li><h1>Recipes!</h1></li>
+				</ul>
+				<!-- END ul -->
+			
 			</div>
-			<footer data-role="footer" data-position="fixed">
-				<nav data-role="navbar">
-					<ul>
-						<li><a href="#home">Home</a></li>
-						<li><a href="#add">Add</a></li>
-						<li><a href="#view">View</a></li>
-					</ul>
-				</nav>
-			</footer>
-		</section>
-		<!-- END page -->
+			<!-- END header -->
 
-		<!-- Javascript -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-		<script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
-		<!-- <script type="text/javascript" src="js/libs/jquery.mobile-1.3.0.min.js"></script> -->
-		<script type="text/javascript" src="js/libs/jquery.validate.min.js"></script>
-		<script type="text/javascript" src="js/json.js"></script>
+			<!-- START section -->
+			<section data-role="content">
+
+				<!-- START form -->
+				<form action="#" method="#" id="add_Form">
+
+					<!-- START div -->
+					<div data-class="button_Div">
+						<input value="Add It!" data-icon="check" type="submit" >
+						<a href="#home">Cancel</a>
+					</div>
+					<!-- END div -->
+
+				</form>
+				<!-- END form -->
+
+			</section>
+			<!-- START section -->
+
+			<!-- START footer -->
+			<div data-role="footer" data-position="fixed" data-id="home">
+
+				<!-- START section -->
+				<section data-role="navbar">
+					
+					<!-- START ul -->
+					<ul>
+						<li><a href="" data-icon="home"></a>Home</li>
+						<li><a href="" data-icon="plus" class="ui-btn-active"></a>Add</li>
+						<li><a href="" data-icon="bars"></a>View</li>
+					</ul>
+					<!-- END ul -->
+				
+				</section>
+				<!-- END section -->
+
+			</div>
+			<!-- END footer -->
+		
+		</div>
+		<!-- END add page -->
+
+		<!-- START JavaScript -->
+		<script type="text/javascript" src="js/libs/jquery.mobile-1.3.1.js"></script>
+		<script type="text/javascript" src="js/libs/jquery-1.9.1.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
+		<!-- END JavaScript -->
+
 	</body>
 	<!-- END body -->
 
