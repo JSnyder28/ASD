@@ -7,8 +7,8 @@ $('#home').on('pageinit', function() {
 });
 
 
-
-$('#add').on('pageinit', function() {
+// FIRST edit code
+/* $('#add').on('pageinit', function() {
 	$('#addButton').on('click', function(itemKey) {
 		if(!itemKey) {
 			id = Math.floor(Math.random()*100000001);
@@ -86,7 +86,7 @@ $('#view').on('pageinit', function() {
 
 $('#editPage').on('pageinit', function(itemKey){
 	
-});
+}); */
 
 
 
@@ -98,108 +98,215 @@ $('#editPage').on('pageinit', function(itemKey){
 
 
 
-
+// ORIGINAL code
 /* $('#add').on('pageinit', function() {
-	$('#addButton').on('click', storeData)
-		var storeData = function(key) {
-			// Check for already existent key.
-			if (!key) {
-				// Generate a random key number, assigning to id variable.
-				var id = Math.floor(Math.random()*100000001);
-			} else {
-				// Overwrite data being edited.
-				// Store new data with current key.
-				id = key;
-			}
-			var item = $('form').serializeArray();
-			localStorage.setItem(id, JSON.stringify(item));
-		};
+    
+        var storeData = function(key) {
+            // Check for already existent key.
+            if (!key) {
+                // Generate a random key number, assigning to id variable.
+                var id = Math.floor(Math.random()*100000001);
+            } else {
+                // Overwrite data being edited.
+                // Store new data with current key.
+                id = key;
+            }
+            var item = $('form').serializeArray();
+            localStorage.setItem(id, JSON.stringify(item));
+        };
+    $('#addButton').on('click', storeData);
+    $('#cancelLink').on('click', function() {
 
-	$('#cancelLink').on('click', function() {
-
-	});
+    });
 });
 
 $('#view').on('pageinit', function() {
-	for(i = 0, j = localStorage.length; i < j; i++) {
-		var makeLi = $('<li>');
-			makeLinksLi = $('<li>');
-		$('#itemsList').append(makeLi);
-		var key = localStorage.key(i);
-		console.log(key);
-			value = localStorage.getItem(key);
-			console.log(value);
-			obj = JSON.parse(value);
-			console.log(obj);
-			makeList = $('<ul>');
-		$(makeLi).append(makeList);
-		for(var l in obj) {
-			console.log(obj[0].name);
-			var makeSubLi = $('<li>');
-			$(makeList).append(makeSubLi);
-			var text = obj[l].name + ": " + obj[l].value;
-			console.log(text.value);
-			$(makeSubLi).html(text);
-			$(makeList).append(makeLinksLi);
-		};
-	itemLinks(localStorage.key(i), makeLinksLi);
-	};
+    for(i = 0, j = localStorage.length; i < j; i++) {
+        var makeLi = $('<li>');
+        var makeLinksLi = $('<li>');
+        $('#itemsList').append(makeLi);
+        var key = localStorage.key(i);
+        console.log(key);
+        var value = localStorage.getItem(key);
+            console.log(value);
+        var obj = JSON.parse(value);
+            console.log(obj);
+        var makeList = $('<ul>');
+        $(makeLi).append(makeList);
+        for(var l in obj) {
+            console.log(obj[0].name);
+            var makeSubLi = $('<li>');
+            $(makeList).append(makeSubLi);
+            var text = obj[l].name + ": " + obj[l].value;
+            console.log(text.value);
+            $(makeSubLi).html(text);
+            $(makeList).append(makeLinksLi);
+        };
+    itemLinks(localStorage.key(i), makeLinksLi);
+    };
 
-	$('#autoFill').on('click', function() {
-	        $.each(json, function(key, value) {
-	            var id = Math.floor(Math.random(key)*100000001);
-	            localStorage.setItem(id, JSON.stringify(value));
-	            window.location.reload();
-	        })
-	        // END .each 'json'
+    $('#autoFill').on('click', function() {
+            $.each(json, function(key, value) {
+                var id = Math.floor(Math.random(key)*100000001);
+                localStorage.setItem(id, JSON.stringify(value));
+                window.location.reload();
+            });
+            // END .each 'json'
     });
     // END #autoFill.on 'click'
 
-	$('#clearAll').on('click', function() {
-		localStorage.clear();
-		window.location.reload();
-	});
+    $('#clearAll').on('click', function() {
+        localStorage.clear();
+        window.location.reload();
+    });
 });
 
 var itemLinks = function(key, makeLinksLi) {
-	var editAnchor = $('<a>Edit</a>').attr(
-		  'href', '#add',
-		  'id', 'editItem',
-		  'key', key
-		);
-	$('#editItem').on('click', editItem);
-	console.log(editAnchor);
-	console.log(key);
-	
-	$(makeLinksLi).append(editAnchor)
-				  .append('<br>')
-				  ;
+    var editAnchor = $('<a>Edit</a>').attr(
+          'href', '#add',
+          'id', 'editItem',
+          'key', key
+        );
+    $('#editItem').on('click', editItem);
+    console.log(editAnchor);
+    console.log(key);
+    
+    $(makeLinksLi).append(editAnchor)
+                  .append('<br>')
+                  ;
 
-	var deleteAnchor = $('<a>Delete</a>').attr(
-		  'href', '#',
-		  'id', 'deleteItem',
-		  'key', key
-		);
-	$('#deleteItem').on('click', deleteItem);
-	$(makeLinksLi).append(deleteAnchor);
+    var deleteAnchor = $('<a>Delete</a>').attr(
+          'href', '#',
+          'id', 'deleteItem',
+          'key', key
+        );
+    $('#deleteItem').on('click', deleteItem);
+    $(makeLinksLi).append(deleteAnchor);
 };
 
 var editItem = function() {
-	$('#addButton').attr('id', 'updateButton');
-	var value = localStorage.getItem(this.key);
-		item = JSON.parse(value);
-	$('#updateButton').val('Update');
-	$('#updateButton').on('click', storeData(this.key))
-				   .attr('key', this.key)
-				  ;
+    $('#addButton').attr('id', 'updateButton');
+    var value = localStorage.getItem(this.key);
+    var item = JSON.parse(value);
+    $('#updateButton').val('Update');
+    $('#updateButton').on('click', storeData(this.key))
+                   .attr('key', this.key)
+                  ;
 };
 
 var deleteItem = function() {
-	var ask = confirm("Are you sure you would like to delete this recipe?");
-	if(ask) {
-		localStorage.removeItem(this.key);
-		window.location.reload();
-	} else {
-		alert("Recipe was not deleted");
-	};
+    var ask = confirm("Are you sure you would like to delete this recipe?");
+    if(ask) {
+        localStorage.removeItem(this.key);
+        window.location.reload();
+    } else {
+        alert("Recipe was not deleted");
+    };
 }; */
+
+
+
+// JS HERO edited code
+$('#add').on('pageinit', function() {    
+    var storeData = function(key) {
+        // Check for already existent key.
+        if (!key) {
+            // Generate a random key number, assigning to id variable.
+            var id = Math.floor(Math.random()*100000001);
+        } else {
+            // Overwrite data being edited.
+            // Store new data with current key.
+            id = key;
+        };
+        var item = $('form').serializeArray();
+        localStorage.setItem(id, JSON.stringify(item));
+    };
+    $('#addButton').on('click', storeData());
+    $('#cancelLink').on('click', function() {
+
+    });
+});
+
+$('#view').on('pageinit', function(itemLinks) {
+    for(i = 0, j = localStorage.length; i < j; i++) {
+        var makeLi = $('<li>');
+        var makeLinksLi = $('<li>');
+        $('#itemsList').append(makeLi);
+        var key = localStorage.key(i);
+        console.log(key);
+        var value = localStorage.getItem(key);
+            console.log(value);
+        var obj = JSON.parse(value);
+            console.log(obj);
+        var makeList = $('<ul>');
+        $(makeLi).append(makeList);
+        for(var l in obj) {
+            console.log(obj[0].name);
+            var makeSubLi = $('<li>');
+            $(makeList).append(makeSubLi);
+            var text = obj[l].name + ": " + obj[l].value;
+            console.log(text.value);
+            $(makeSubLi).html(text);
+            $(makeList).append(makeLinksLi);
+        };
+    itemLinks(localStorage.key(i), makeLinksLi);
+    };
+
+    $('#autoFill').on('click', function() {
+            $.each('json', function(key, value) {
+                var id = Math.floor(Math.random(key)*100000001);
+                localStorage.setItem(id, JSON.stringify(value));
+                window.location.reload();
+            });
+            // END .each 'json'
+    });
+    // END #autoFill.on 'click'
+
+    $('#clearAll').on('click', function() {
+        localStorage.clear();
+        window.location.reload();
+    });
+});
+
+var itemLinks = function(key, makeLinksLi, editItem, deleteItem) {
+    var editAnchor = $('<a>Edit</a>').attr(
+          'href', '#add',
+          'id', 'editItem',
+          'key', key
+        );
+    $('#editItem').on('click', editItem());
+    console.log(editAnchor);
+    console.log(key);
+    
+    $(makeLinksLi).append(editAnchor)
+                  .append('<br>')
+                  ;
+
+    var deleteAnchor = $('<a>Delete</a>').attr(
+          'href', '#',
+          'id', 'deleteItem',
+          'key', key
+        );
+    $('#deleteItem').on('click', deleteItem());
+    $(makeLinksLi).append(deleteAnchor);
+};
+
+var editItem = function(storeData) {
+    $('#addButton').attr('id', 'updateButton');
+    var value = localStorage.getItem(this.key);
+    var item = JSON.parse(value);
+    $('#updateButton').val('Update');
+    $('#updateButton').on('click', storeData(this.key))
+                   .attr('key', this.key)
+                  ;
+};
+
+var deleteItem = function() {
+    var ask = confirm("Are you sure you would like to delete this recipe?");
+    if(ask) {
+        localStorage.removeItem(this.key);
+        window.location.reload();
+    } else {
+        alert("Recipe was not deleted");
+    };
+};
