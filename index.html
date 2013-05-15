@@ -11,14 +11,18 @@
 		<title>Recipes!</title>
 
 		<!-- START meta -->
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta charset="utf-8" />
 		<!-- END head -->
 
 		<!-- START stylesheet -->
-		<link rel="stylesheet" type="text/css" href="jquery.mobile.structure-1.3.1.css">
-		<link rel="stylesheet" type="text/css" href="jquery.mobile-1.3.1.css">
-		<link rel="stylesheet" type="text/css" href="jquery.mobile.theme-1.3.1.css">
-		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<!-- <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.3.1.min.css" /> -->
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.3.1.css" />
+		<!-- <link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.3.1.min.css" /> -->
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.3.1.css" />
+		<!-- <link rel="stylesheet" type="text/css" href="css/jquery.mobile.theme-1.3.1.min.css" /> -->
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.theme-1.3.1.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<!-- END head -->
 
 
@@ -29,103 +33,230 @@
 	<body>
 
 		<!-- START homepage -->
-		<div data-role="page" id="home">
-			
+		<div data-role="page" id="home">			
 			<!-- START header -->
-			<div data-role="header" data-postition="fixed">
-				
-				<!-- START ul -->
-				<ul>
-					<li><h1>Recipes!</h1></li>
-				</ul>
-				<!-- END ul -->
-			
-			</div>
-			<!-- END header -->
-
-			<!-- START footer -->
-			<div data-role="footer" data-position="fixed" data-id="home">
-
-				<!-- START section -->
-				<section data-role="navbar">
-					
-					<!-- START ul -->
-					<ul>
-						<li><a href="" data-icon="home" class="ui-btn-active"></a>Home</li>
-						<li><a href="" data-icon="plus"></a>Add</li>
-						<li><a href="" data-icon="bars"></a>View</li>
-					</ul>
-					<!-- END ul -->
-				
-				</section>
-				<!-- END section -->
-
-			</div>
-			<!-- END footer -->
-		
-		</div>
-		<!-- END homepage -->
-
-		<!-- START add page -->
-		<div data-role="page" id="add">
-			
-			<!-- START header -->
-			<div data-role="header" data-postition="fixed">
-				
-				<!-- START ul -->
-				<ul>
-					<li><h1>Recipes!</h1></li>
-				</ul>
-				<!-- END ul -->
-			
+			<div data-role="header" data-postition="fixed">				
+				<h1>Recipes!</h1>
 			</div>
 			<!-- END header -->
 
 			<!-- START section -->
 			<section data-role="content">
+				<!-- START div -->
+				<div data-role="controlgroup">
+					<a href="" data-role="button">American</a>
+					<a href="" data-role="button">Chinese</a>
+					<a href="" data-role="button">Italian</a>
+					<a href="" data-role="button">Japanese</a>
+					<a href="" data-role="button">Mexican</a>
+					<a href="" data-role="button">Seasonal</a>
+				</div>
+				<!-- END div -->
+			
+			</section>
+			<!-- END section -->
 
+			<!-- START footer -->
+			<div data-role="footer" data-position="fixed" data-id="home">
+				<!-- START section -->
+				<section data-role="navbar">
+					<!-- START ul -->
+					<ul>
+						<li><a href="#home" data-icon="home" class="ui-btn-active">Home</a></li>
+						<li><a href="#add" data-icon="plus">Add</a></li>
+						<li><a href="#view" data-icon="bars">View</a></li>
+					</ul>
+					<!-- END ul -->
+				</section>
+				<!-- END section -->
+			</div>
+			<!-- END footer -->
+		</div>
+		<!-- END homepage -->
+
+		<!-- START add page -->
+		<div data-role="page" id="add">			
+			<!-- START header -->
+			<div data-role="header" data-postition="fixed">
+				<h1>Add Recipe!</h1>
+			</div>
+			<!-- END header -->
+
+			<!-- START section -->
+			<section data-role="content">
 				<!-- START form -->
 				<form action="#" method="#" id="add_Form">
-
 					<!-- START div -->
-					<div data-class="button_Div">
-						<input value="Add It!" data-icon="check" type="submit" >
-						<a href="#home">Cancel</a>
+					<div>
+						<label for="category" class="select">Category:</label>
+						<select name="category" id="select-choice">
+							<option value="">Choose a Category</option>
+							<option value="american">American</option>
+							<option value="chinese">Chinese</option>
+							<option value="italian">Italian</option>
+							<option value="japanese">Japanese</option>
+							<option value="mexican">Mexican</option>
+							<option value="seasonal">Seasonal</option>
+						</select>
 					</div>
 					<!-- END div -->
-
+					<!-- START div -->
+					<div>
+						<label for="name">Recipe Name:</label>
+						<input name="name" id="text-1" value="" type="text" />
+					</div>
+					<!-- END div -->
+					<div>
+						<label for="ingredients">Recipe Ingredients:</label>
+						<textarea name="ingredients"></textarea>
+						<label for="directions">Cooking Directions:</label>
+						<textarea name="directions"></textarea>
+					</div>
+					<label for="rating">Rating:</label>
+					<input type="range" name="rating" id="slider" min="1" max="5" value="3" />
+					<label>
+						<input type="checkbox" data-icon="check" name="favorite">Go-To Meal</input>
+					</label>
+					<!-- START div -->
+					<div data-class="button_Div">
+						<input value="Add It!" id="addButton" type="submit" />
+						<a href="#home" id="cancelLink">Cancel</a>
+					</div>
+					<!-- END div -->
 				</form>
 				<!-- END form -->
-
 			</section>
 			<!-- START section -->
 
 			<!-- START footer -->
 			<div data-role="footer" data-position="fixed" data-id="home">
-
 				<!-- START section -->
 				<section data-role="navbar">
-					
 					<!-- START ul -->
 					<ul>
-						<li><a href="" data-icon="home"></a>Home</li>
-						<li><a href="" data-icon="plus" class="ui-btn-active"></a>Add</li>
-						<li><a href="" data-icon="bars"></a>View</li>
+						<li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="#add" data-icon="plus" class="ui-btn-active">Add</a></li>
+						<li><a href="#view" data-icon="bars">View</a></li>
 					</ul>
 					<!-- END ul -->
-				
 				</section>
 				<!-- END section -->
-
 			</div>
 			<!-- END footer -->
-		
 		</div>
 		<!-- END add page -->
 
+		<!-- START edit page -->
+		<div data-role="page" id="editPage">			
+			<!-- START header -->
+			<div data-role="header" data-postition="fixed">
+				<h1>Edit Recipe!</h1>
+			</div>
+			<!-- END header -->
+
+			<!-- START section -->
+			<section data-role="content">
+				<!-- START form -->
+				<form action="#" method="#" id="add_Form">
+					<!-- START div -->
+					<div>
+						<label for="category" class="select">Category:</label>
+						<select name="category" id="select-choice">
+							<option value="">Choose a Category</option>
+							<option value="american">American</option>
+							<option value="chinese">Chinese</option>
+							<option value="italian">Italian</option>
+							<option value="japanese">Japanese</option>
+							<option value="mexican">Mexican</option>
+							<option value="seasonal">Seasonal</option>
+						</select>
+					</div>
+					<!-- END div -->
+					<!-- START div -->
+					<div>
+						<label for="name">Recipe Name:</label>
+						<input name="name" id="text-1" value="" type="text" />
+					</div>
+					<!-- END div -->
+					<div>
+						<label for="ingredients">Recipe Ingredients:</label>
+						<textarea name="ingredients"></textarea>
+						<label for="directions">Cooking Directions:</label>
+						<textarea name="directions"></textarea>
+					</div>
+					<label for="rating">Rating:</label>
+					<input type="range" name="rating" id="slider" min="1" max="5" value="3" />
+					<label>
+						<input type="checkbox" data-icon="check" name="favorite">Go-To Meal</input>
+					</label>
+					<!-- START div -->
+					<div data-class="button_Div">
+						<input value="Add It!" id="addButton" type="submit" />
+						<a href="#home" id="cancelLink">Cancel</a>
+					</div>
+					<!-- END div -->
+				</form>
+				<!-- END form -->
+			</section>
+			<!-- START section -->
+
+			<!-- START footer -->
+			<div data-role="footer" data-position="fixed" data-id="home">
+				<!-- START section -->
+				<section data-role="navbar">
+					<!-- START ul -->
+					<ul>
+						<li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="#add" data-icon="plus" class="ui-btn-active">Add</a></li>
+						<li><a href="#view" data-icon="bars">View</a></li>
+					</ul>
+					<!-- END ul -->
+				</section>
+				<!-- END section -->
+			</div>
+			<!-- END footer -->
+		</div>
+		<!-- END edit page -->
+
+		<!-- START view page -->
+		<div data-role="page" id="view">			
+			<!-- START header -->
+			<div data-role="header" data-postition="fixed">
+				<h1>Recipes!</h1>
+			</div>
+			<!-- END header -->
+			<section data-role="content">
+				<div id="displayDiv">
+				</div>
+			</section>
+			<div>
+				<input value="Autofill" id="autoFill" type="button" />
+				<input value="Clear" id="clearAll" type="button" />
+			</div>
+
+			<!-- START footer -->
+			<div data-role="footer" data-position="fixed" data-id="home">
+				<!-- START section -->
+				<section data-role="navbar">
+					<!-- START ul -->
+					<ul>
+						<li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="#add" data-icon="plus">Add</a></li>
+						<li><a href="#view" data-icon="bars" class="ui-btn-active">View</a></li>
+					</ul>
+					<!-- END ul -->
+				</section>
+				<!-- END section -->
+			</div>
+			<!-- END footer -->
+		</div>
+		<!-- END view page -->
+
 		<!-- START JavaScript -->
-		<script type="text/javascript" src="js/libs/jquery.mobile-1.3.1.js"></script>
 		<script type="text/javascript" src="js/libs/jquery-1.9.1.js"></script>
+		<!-- <script type="text/javascript" src="js/libs/jquery.mobile-1.3.1.min.js"></script> -->
+		<script type="text/javascript" src="js/libs/jquery.mobile-1.3.1.js"></script>
+		<script type="text/javascript" src="js/json.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
 		<!-- END JavaScript -->
 
