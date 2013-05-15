@@ -3,12 +3,57 @@
 // Project Week 2
 
 $('#home').on('pageinit', function() {
+	$('jsonData').on('click', function() {
+		$.getJSON('xhr/list.js', function(data) {
+            console.log(data.Recipes[1].Category);
+            for (var i = 0, len = data.Recipes.length; i < len; i++) {
+                var arr = data.Recipes[i];
+                $(''+'<div>'
+                        +'<h4>' + arr.Name + '</h4>'
+                        +'<ul>' + arr.Category
+                            +'<li>' + arr.Directions + '</li>'
+                            +'<li>' + arr.Ingredients + '</li>'
+                            +'<li>' + arr.Favorite + '</li>'
+                            +'<li>' + arr.Rating + '</li>'
+                        +'</ul>'
+                    +'</div>'
+                 )
+                  .appendTo('#view > section')
+                ;
+            };
+        });
+    });
 
+	$('#xmlData').on('click', function() {
+        // When XML button is clicked
+        /* $.ajax({
+            url: "ajax_xml.xml",
+            type: "GET",
+            dataType: "json",
+            success: function(response) {
+                console.log(response);
+            }
+        }); */
+        /* xmlhttp=new XMLHttpRequest();
+        if (window.XMLHttpRequest) {
+            xmlhttp=new XMLHttpRequest();
+        } else {
+            xmlhttp=new ActiveXObject ('Microsoft.XMLHTTP');
+        };
+        xmlhttp.open('GET', 'xhr/list.xml', false);
+        xmlhttp.send();
+        xmlDoc=xmlhttp.responseXML; */
+        $('#view > section').load('xhr/list.xml', function(data, status) {
+            console.log(data, status);
+        });
+    });
+    // END xmlData.on 'click'
 });
 
 
 
 $('#add').on('pageinit', function() {
+
 // FIRST edit code
 /* $('#add').on('pageinit', function() {
 	$('#addButton').on('click', function(itemKey) {
@@ -66,7 +111,6 @@ $('#view').on('pageinit', function() {
 			window.location.reload();
 		});
 	});
-
 
 
 	$('#autoFill').on('click', function() {
@@ -314,6 +358,8 @@ var deleteItem = function() {
 
 
 
+
+
 // JS HERO edited code
 $('#add').on('pageinit', function() {    
     var storeData = function(key) {
@@ -336,7 +382,7 @@ $('#add').on('pageinit', function() {
 });
 
 $('#view').on('pageinit', function(itemLinks) {
-    for(i = 0, j = localStorage.length; i < j; i++) {
+    for(var i = 0, j = localStorage.length; i < j; i++) {
         var makeLi = $('<li>');
         var makeLinksLi = $('<li>');
         $('#itemsList').append(makeLi);
@@ -357,7 +403,7 @@ $('#view').on('pageinit', function(itemLinks) {
             $(makeSubLi).html(text);
             $(makeList).append(makeLinksLi);
         };
-    itemLinks(localStorage.key(i), makeLinksLi);
+    function itemLinks(localStorage.key(i), makeLinksLi);
     };
 
     $('#autoFill').on('click', function() {
@@ -376,7 +422,7 @@ $('#view').on('pageinit', function(itemLinks) {
     });
 });
 
-var itemLinks = function(key, makeLinksLi, editItem, deleteItem) {
+function itemLinks(key, makeLinksLi, editItem, deleteItem) {
     var editAnchor = $('<a>Edit</a>').attr(
           'href', '#add',
           'id', 'editItem',
