@@ -39,32 +39,36 @@ $('#add').on('pageinit', function() {
         var data = $(this).serializeArray();
         localStorage.setItem(id, JSON.stringify(data));
     });
+    window.location.reload();
 });
 // END #add 'pageinit'
 
 $('#view').on('pageinit', function() {
     $.each(localStorage, function(key, value) {
         var parArr = JSON.parse(value);
-        $('#displayDiv').append('<ul data-key='+ key +'>Recipe: ' + key + '</ul>');
+        $('#displayDiv').append('<ul>Recipe: ' + key + '</ul>');
         for(var l in parArr) {
             $('<li>' + parArr[l].name + ": " + parArr[l].value + '</li>'
              ).appendTo('#displayDiv')
             ;
         };
-        $('#displayDiv').append('<li>' + '<a href="#add" id="editLink">Edit</a>' + '</li>');
+        $('#displayDiv').append('<li>' + '<a href="#" class="edit" data-key="'+ key +'">Edit</a>' + '</li>');
         
         $('#displayDiv').append('<li>' + 
-                                    '<a href="#" id="deleteLink">Delete</a>' + 
+                                    '<a href="#" class="delete" data-key="'+ key +'">Delete</a>' + 
                                 '</li>'
                                 );
     });
 
-    $('#deleteLink').on('click', function() {
-        $.each(localStorage, function(key) {
-            console.log(key);
-        });
-        //localStorage.removeItem(key);
-        console.log(key);
+    $('.edit').on('click', function() {
+        var editKey = $(this).data('key');
+        console.log(editKey);
+    });
+
+    $('.delete').on('click', function() {
+       var deleteKey = $(this).data('key');
+       localStorage.removeItem(deleteKey);
+       window.location.reload();
     });
 
     $('#autoFill').on('click', function() {
