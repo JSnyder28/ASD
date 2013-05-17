@@ -2,10 +2,11 @@
 // ASD 1305
 // Project Week 2
 
+
 $('#home').on('pageinit', function() {
-	$('jsonData').on('click', function() {
-		$.getJSON('xhr/list.js', function(data) {
-            console.log(data.Recipes[1].Category);
+    $('#jsonData').on('click', function() {
+        // When JSON button is clicked
+        $.getJSON('xhr/list.js', function(data) {
             for (var i = 0, len = data.Recipes.length; i < len; i++) {
                 var arr = data.Recipes[i];
                 $(''+'<div>'
@@ -24,29 +25,12 @@ $('#home').on('pageinit', function() {
         });
     });
 
-	$('#xmlData').on('click', function() {
+    $('#xmlData').on('click', function() {
         // When XML button is clicked
-        /* $.ajax({
-            url: "ajax_xml.xml",
-            type: "GET",
-            dataType: "json",
-            success: function(response) {
-                console.log(response);
-            }
-        }); */
-        /* xmlhttp=new XMLHttpRequest();
-        if (window.XMLHttpRequest) {
-            xmlhttp=new XMLHttpRequest();
-        } else {
-            xmlhttp=new ActiveXObject ('Microsoft.XMLHTTP');
-        };
-        xmlhttp.open('GET', 'xhr/list.xml', false);
-        xmlhttp.send();
-        xmlDoc=xmlhttp.responseXML; */
         $('#view > section').load('xhr/list.xml', function(data, status) {
-            console.log(data, status);
         });
     });
+<<<<<<< HEAD
     // END xmlData.on 'click'
 });
 
@@ -68,8 +52,12 @@ $('#add').on('pageinit', function() {
 		console.log(data);
 		console.log(id);
 	});
+=======
+>>>>>>> jsnyder
 });
+// END #home 'pageinit'
 
+<<<<<<< HEAD
 
 
 $('#view').on('pageinit', function() {
@@ -269,159 +257,58 @@ var deleteItem = function() {
     $('#addButton').on('click', storeData);
     $('#cancelLink').on('click', function() {
 
+=======
+$('#add').on('pageinit', function() {
+    $('form').on('submit', function() {
+        var id = Math.floor(Math.random()*100000001);
+        var data = $(this).serializeArray();
+        localStorage.setItem(id, JSON.stringify(data));
+>>>>>>> jsnyder
     });
 });
+// END #add 'pageinit'
 
 $('#view').on('pageinit', function() {
-    for(i = 0, j = localStorage.length; i < j; i++) {
-        var makeLi = $('<li>');
-        var makeLinksLi = $('<li>');
-        $('#itemsList').append(makeLi);
-        var key = localStorage.key(i);
-        console.log(key);
-        var value = localStorage.getItem(key);
-            console.log(value);
-        var obj = JSON.parse(value);
-            console.log(obj);
-        var makeList = $('<ul>');
-        $(makeLi).append(makeList);
-        for(var l in obj) {
-            console.log(obj[0].name);
-            var makeSubLi = $('<li>');
-            $(makeList).append(makeSubLi);
-            var text = obj[l].name + ": " + obj[l].value;
-            console.log(text.value);
-            $(makeSubLi).html(text);
-            $(makeList).append(makeLinksLi);
+    $.each(localStorage, function(key, value) {
+        var parArr = JSON.parse(value);
+        $('#displayDiv').append('<ul data-key='+ key +'>Recipe: ' + key + '</ul>');
+        for(var l in parArr) {
+            $('<li>' + parArr[l].name + ": " + parArr[l].value + '</li>'
+             ).appendTo('#displayDiv')
+            ;
         };
-    itemLinks(localStorage.key(i), makeLinksLi);
-    };
+        $('#displayDiv').append('<li>' + '<a href="#add" id="editLink">Edit</a>' + '</li>');
+        
+        $('#displayDiv').append('<li>' + 
+                                    '<a href="#" id="deleteLink">Delete</a>' + 
+                                '</li>'
+                                );
+    });
+
+    $('#deleteLink').on('click', function() {
+        $.each(localStorage, function(key) {
+            console.log(key);
+        });
+        //localStorage.removeItem(key);
+        console.log(key);
+    });
 
     $('#autoFill').on('click', function() {
-            $.each(json, function(key, value) {
-                var id = Math.floor(Math.random(key)*100000001);
-                localStorage.setItem(id, JSON.stringify(value));
-                window.location.reload();
-            });
-            // END .each 'json'
-    });
-    // END #autoFill.on 'click'
-
-    $('#clearAll').on('click', function() {
-        localStorage.clear();
-        window.location.reload();
-    });
-});
-
-var itemLinks = function(key, makeLinksLi) {
-    var editAnchor = $('<a>Edit</a>').attr(
-          'href', '#add',
-          'id', 'editItem',
-          'key', key
-        );
-    $('#editItem').on('click', editItem);
-    console.log(editAnchor);
-    console.log(key);
-    
-    $(makeLinksLi).append(editAnchor)
-                  .append('<br>')
-                  ;
-
-    var deleteAnchor = $('<a>Delete</a>').attr(
-          'href', '#',
-          'id', 'deleteItem',
-          'key', key
-        );
-    $('#deleteItem').on('click', deleteItem);
-    $(makeLinksLi).append(deleteAnchor);
-};
-
-var editItem = function() {
-    $('#addButton').attr('id', 'updateButton');
-    var value = localStorage.getItem(this.key);
-    var item = JSON.parse(value);
-    $('#updateButton').val('Update');
-    $('#updateButton').on('click', storeData(this.key))
-                   .attr('key', this.key)
-                  ;
-};
-
-var deleteItem = function() {
-    var ask = confirm("Are you sure you would like to delete this recipe?");
-    if(ask) {
-        localStorage.removeItem(this.key);
-        window.location.reload();
-    } else {
-        alert("Recipe was not deleted");
-    };
-}; */
-
-
-
-
-
-// JS HERO edited code
-$('#add').on('pageinit', function() {    
-    var storeData = function(key) {
-        // Check for already existent key.
-        if (!key) {
-            // Generate a random key number, assigning to id variable.
+        for (var n in json) {
             var id = Math.floor(Math.random()*100000001);
-        } else {
-            // Overwrite data being edited.
-            // Store new data with current key.
-            id = key;
+            localStorage.setItem(id, JSON.stringify(json[n]));
         };
-        var item = $('form').serializeArray();
-        localStorage.setItem(id, JSON.stringify(item));
-    };
-    $('#addButton').on('click', storeData());
-    $('#cancelLink').on('click', function() {
-
+            window.location.reload();
     });
-});
-
-$('#view').on('pageinit', function(itemLinks) {
-    for(var i = 0, j = localStorage.length; i < j; i++) {
-        var makeLi = $('<li>');
-        var makeLinksLi = $('<li>');
-        $('#itemsList').append(makeLi);
-        var key = localStorage.key(i);
-        console.log(key);
-        var value = localStorage.getItem(key);
-            console.log(value);
-        var obj = JSON.parse(value);
-            console.log(obj);
-        var makeList = $('<ul>');
-        $(makeLi).append(makeList);
-        for(var l in obj) {
-            console.log(obj[0].name);
-            var makeSubLi = $('<li>');
-            $(makeList).append(makeSubLi);
-            var text = obj[l].name + ": " + obj[l].value;
-            console.log(text.value);
-            $(makeSubLi).html(text);
-            $(makeList).append(makeLinksLi);
-        };
-    function itemLinks(localStorage.key(i), makeLinksLi);
-    };
-
-    $('#autoFill').on('click', function() {
-            $.each('json', function(key, value) {
-                var id = Math.floor(Math.random(key)*100000001);
-                localStorage.setItem(id, JSON.stringify(value));
-                window.location.reload();
-            });
-            // END .each 'json'
-    });
-    // END #autoFill.on 'click'
 
     $('#clearAll').on('click', function() {
         localStorage.clear();
         window.location.reload();
     });
 });
+// END #view 'pageinit'
 
+<<<<<<< HEAD
 function itemLinks(key, makeLinksLi, editItem, deleteItem) {
     var editAnchor = $('<a>Edit</a>').attr(
           'href', '#add',
@@ -464,3 +351,5 @@ var deleteItem = function() {
         alert("Recipe was not deleted");
     };
 };
+=======
+>>>>>>> jsnyder
