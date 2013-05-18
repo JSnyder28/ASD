@@ -40,7 +40,6 @@ $('#add').on('pageinit', function() {
         localStorage.setItem(id, JSON.stringify(data));
         window.location.reload();
     });
-    window.location.reload();
 });
 // END #add 'pageinit'
 
