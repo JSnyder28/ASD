@@ -38,6 +38,7 @@ $('#add').on('pageinit', function() {
         var id = Math.floor(Math.random()*100000001);
         var data = $(this).serializeArray();
         localStorage.setItem(id, JSON.stringify(data));
+        window.location.reload();
     });
     window.location.reload();
 });
@@ -52,7 +53,10 @@ $('#view').on('pageinit', function() {
              ).appendTo('#displayDiv')
             ;
         };
-        $('#displayDiv').append('<li>' + '<a href="#" class="edit" data-key="'+ key +'">Edit</a>' + '</li>');
+        $('#displayDiv').append('<li>' + 
+                                    '<a href="#add" class="edit" data-key="'+ key +'">Edit</a>' + 
+                                '</li>'
+                                );
         
         $('#displayDiv').append('<li>' + 
                                     '<a href="#" class="delete" data-key="'+ key +'">Delete</a>' + 
@@ -62,11 +66,35 @@ $('#view').on('pageinit', function() {
 
     $('.edit').on('click', function() {
         var editKey = $(this).data('key');
-        console.log(editKey);
+        $('#addButton').attr('data-key', editKey);
+            var value = localStorage.getItem(editKey);
+            var items = JSON.parse(value);
+            // console.log(items);
+            $('#select-choice option:selected').val(items[0].value);
+            $('#text-1').val(items[1].value);
+            $('#textArea-1').val(items[2].value);
+            $('#textArea-2').val(items[3].value);
+            $('#slider').val(items[5].value);
+            console.log(items[4].value);
+            if(items[4].value === "Yes") {
+                $('#checkbox').prop('checked', true);
+                // console.log(true);
+            } else {
+                $('#checkbox').prop('checked', false);
+                // console.log(false);
+            };
+            $('#slider').val(items[5].value);
+            $('form').on('submit', function() {
+                var data = $(this).serializeArray();
+                localStorage.setItem(editKey, JSON.stringify(data));
+                window.location.reload();
+            });
+        
     });
 
     $('.delete').on('click', function() {
        var deleteKey = $(this).data('key');
+       console.log(deleteKey);
        localStorage.removeItem(deleteKey);
        window.location.reload();
     });
@@ -85,4 +113,3 @@ $('#view').on('pageinit', function() {
     });
 });
 // END #view 'pageinit'
-
