@@ -35,7 +35,12 @@ $('#home').on('pageinit', function() {
 
 $('#add').on('pageinit', function() {
     $('form').on('submit', function() {
-        var id = Math.floor(Math.random()*100000001);
+        var editKey = $('#addButton').data('key');
+        if(!editKey) {
+            var id = Math.floor(Math.random()*100000001);
+        } else {
+            id = editKey;
+        };
         var data = $(this).serializeArray();
         localStorage.setItem(id, JSON.stringify(data));
         window.location.reload();
@@ -69,26 +74,20 @@ $('#view').on('pageinit', function() {
             var value = localStorage.getItem(editKey);
             var items = JSON.parse(value);
             // console.log(items);
-            $('#select-choice option:selected').val(items[0].value);
+            $('#select-choice').val(items[0].value);
             $('#text-1').val(items[1].value);
             $('#textArea-1').val(items[2].value);
             $('#textArea-2').val(items[3].value);
             $('#slider').val(items[5].value);
             console.log(items[4].value);
             if(items[4].value === "Yes") {
-                $('#checkbox').prop('checked', true);
+                $('.checkbox').prop('checked', true);
                 // console.log(true);
             } else {
-                $('#checkbox').prop('checked', false);
+                $('.checkbox').prop('checked', false);
                 // console.log(false);
             };
             $('#slider').val(items[5].value);
-            $('form').on('submit', function() {
-                var data = $(this).serializeArray();
-                localStorage.setItem(editKey, JSON.stringify(data));
-                window.location.reload();
-            });
-        
     });
 
     $('.delete').on('click', function() {
