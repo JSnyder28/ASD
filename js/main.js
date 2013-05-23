@@ -80,12 +80,19 @@ $('#view').on('pageinit', function() {
             $('#textArea-2').val(items[3].value);
             $('#slider').val(items[5].value);
             console.log(items[4].value);
+<<<<<<< HEAD
             if(items[4].value === "Yes") {
+=======
+            if(items[4].value === "Yes" || "on") {
+>>>>>>> jsnyder
                 $('.checkbox').prop('checked', true);
                 // console.log(true);
             } else {
                 $('.checkbox').prop('checked', false);
+<<<<<<< HEAD
                 // console.log(false);
+=======
+>>>>>>> jsnyder
             };
             $('#slider').val(items[5].value);
     });

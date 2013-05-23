@@ -1,0 +1,17 @@
+/*
+Joshua Snyder
+ASD 1303
+Project Week 1
+*/
+
+#home > div > ul {
+	list-style-type: none;
+}
+
+#items [href]  {
+	margin-right: 10px;
+}
+
+#items ul {
+	list-style-type: none;
+}
