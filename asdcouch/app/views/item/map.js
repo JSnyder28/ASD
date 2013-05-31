@@ -1,5 +1,5 @@
 function (doc) {
-	if (doc.type === "recipe") {
+	if (doc.name[1] === item.name) {
 		emit(doc._rev, {
 			"category": doc.category[1],
 			"name": doc.name[1],
