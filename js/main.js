@@ -74,7 +74,7 @@ $('#view').on('pageinit', function() {
             var value = localStorage.getItem(editKey);
             var items = JSON.parse(value);
             // console.log(items);
-            $('#select-choice').val(items[0].value);
+            $('.class option').attr('selected', "selected");
             $('#text-1').val(items[1].value);
             $('#textArea-1').val(items[2].value);
             $('#textArea-2').val(items[3].value);
