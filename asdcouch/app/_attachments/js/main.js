@@ -26,14 +26,12 @@ $('#view').on('pageinit', function() {
 
 	$.couch.db("asdrecipes").view("recipes/recipes", {
 		success: function(data) {
-		console.log(data);
 			$('#viewList').empty();
 			$.each(data.rows, function(index, recipe) {
-			console.log(recipe);
 				var item = (recipe.value || recipe.doc);
 				$('#viewList').append(
 				  $('<li>').append(
-				    $('<a href="recipe.html?recipe='+ recipe.id +'rev='+ recipe.key +'">')
+				    $('<a href="recipe.html?recipe='+ recipe.id +'%rev='+ recipe.key +'">')
 				     .text(item.name)
 				  )
 				);
@@ -71,13 +69,71 @@ $('#view').on('pageinit', function() {
 });
 
 
-$('#recipe').on('pageinit', function() {
+$(document).on('pageinit', '#recipe', function() {
 	var urlData = $(this).data('url');
-	console.log(urlData);
+	var urlParts = urlData.split('?');
+	var urlPairs = urlParts[1].split('%');
+	var urlValues = {};
+	for (var i in urlPairs) {
+		var keyValue = urlPairs[i].split('=');
+		var key = decodeURIComponent(keyValue[0]);
+		var value = decodeURIComponent(keyValue[1]);
+		urlValues[key] = value;
+	}
+	console.log(urlValues.recipe);
+	$.couch.db('asdrecipes').openDoc(urlValues.recipe, {
+		success: function(data) {
+			console.log(data);
+			
+			$('#detailsList').append(
+				'<li>' + data.category + '</li>'
+				+ '<li>' + data.name + '</li>'
+				+ '<li>' + data.ingredients + '</li>'
+				+ '<li>' + data.directions + '</li>'
+				+ '<li>' + data.rating + '</li>'
+				+ '<li>' + data.favorite + '</li>'
+			);
+		},
+		error: function(status) {
+			console.log(status);
+		}
+	});
 	
+	$('#editItem').on('click', function() {
+		$.couch.db('asdrecipes').openDoc(urlValues.recipe, {
+			success: function(data) {
+				console.log(data);
+				
+				$('.class option').attr('selected', 'selected');
+				$('#rcpName').val(data.name);
+				$('#txtArea-A').val(data.ingredients);
+				$('#txtArea-B').val(data.directions);
+				$('#slider').val(data.rating)
+				if (data.favorite === "Yes" || "on") {
+					$('.checkboxFav').prop('checked', true);
+				} else {
+					$('.checkboxFav').prop('checked', false);
+				};
+			},
+			error: function(status) {
+				console.log(status);
+			}
+		});
+	});
 	
 	$('#deleteItem').on('click', function() {
-		
+		var doc = {
+			_id: urlValues.recipe,
+			_rev: urlValues.rev
+		};
+		$.couch.db('asdrecipes').removeDoc(doc, {
+			success: function(data) {
+				console.log(data);
+			},
+			error: function(status) {
+				console.log(status);
+			}
+		});
 	});
 });
 
