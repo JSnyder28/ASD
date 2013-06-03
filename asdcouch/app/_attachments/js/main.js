@@ -104,12 +104,12 @@ $(document).on('pageinit', '#recipe', function() {
 			success: function(data) {
 				console.log(data);
 				
-				$('.class option').attr('selected', 'selected');
-				$('#rcpName').val(data.name);
-				$('#txtArea-A').val(data.ingredients);
-				$('#txtArea-B').val(data.directions);
-				$('#slider').val(data.rating)
-				if (data.favorite === "Yes" || "on") {
+				$('.select option').attr('selected', 'selected');
+				$('#rcpName').val(data.name[1]);
+				$('#txtArea-A').val(data.ingredients[1]);
+				$('#txtArea-B').val(data.directions[1]);
+				$('#slider').val(data.rating[1])
+				if (data.favorite[1] === "Yes" || "on") {
 					$('.checkboxFav').prop('checked', true);
 				} else {
 					$('.checkboxFav').prop('checked', false);
